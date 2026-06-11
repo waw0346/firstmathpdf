@@ -185,33 +185,46 @@ def classify_problem(
         grade_hint=meta.get("grade", "미상")
     )
 
-    try:
-        response = client.messages.create(
-            model=CONFIG["api"]["anthropic"]["model"],
-            max_tokens=CONFIG["api"]["anthropic"]["max_tokens"],
-            messages=[{"role": "user", "content": prompt}]
-        )
-        text = response.content[0].text.strip()
-        # JSON 파싱
-        if "```" in text:
-            match = re.search(r"```(?:json)?\s*([\s\S]+?)\s*```", text)
-            if match:
-                text = match.group(1)
-        return json.loads(text)
-    except Exception as e:
-        log.error(f"분류 실패 (문제 {problem['problem_number']}): {e}")
-        return {
-            "title": f"문제 {problem['problem_number']}",
-            "domain": "미분류",
-            "topic": "미분류",
-            "concept": [],
-            "difficulty": "중",
-            "answer": "",
-            "solution_outline": "",
-            "solution_steps": 0,
-            "tags": ["분류오류"],
-            "grade": meta.get("grade", "")
-        }
+    last_err = None
+    for attempt in range(2):
+        try:
+            response = client.messages.create(
+                model=CONFIG["api"]["anthropic"]["model"],
+                max_tokens=CONFIG["api"]["anthropic"]["max_tokens"],
+                system="반드시 유효한 JSON 객체만 반환하세요. 마크다운, 코드블록, 설명 텍스트 없이 { } 로 시작하고 끝나는 JSON만 출력하세요.",
+                messages=[{"role": "user", "content": prompt}]
+            )
+            text = response.content[0].text.strip()
+            # 코드 블록 안의 JSON 추출
+            if "```" in text:
+                m = re.search(r"```(?:json)?\s*([\s\S]+?)\s*```", text)
+                if m:
+                    text = m.group(1).strip()
+            # JSON 객체만 추출 (앞뒤 여분 텍스트 제거, 빈 응답 대응)
+            m = re.search(r"\{[\s\S]*\}", text)
+            if not m:
+                raise ValueError(f"JSON 객체를 찾을 수 없음: {text[:80]!r}")
+            return json.loads(m.group(0))
+        except (json.JSONDecodeError, ValueError) as e:
+            last_err = e
+            if attempt == 0:
+                log.warning(f"JSON 파싱 재시도 (문제 {problem['problem_number']}): {e}")
+        except Exception as e:
+            last_err = e
+            break
+    log.error(f"분류 실패 (문제 {problem['problem_number']}): {last_err}")
+    return {
+        "title": f"문제 {problem['problem_number']}",
+        "domain": "미분류",
+        "topic": "미분류",
+        "concept": [],
+        "difficulty": "중",
+        "answer": "",
+        "solution_outline": "",
+        "solution_steps": 0,
+        "tags": ["분류오류"],
+        "grade": meta.get("grade", "")
+    }
 
 
 # ──────────────────────────────────────────────────────────────
