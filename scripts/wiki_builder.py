@@ -39,12 +39,11 @@ def get_conn():
     """Windows/Linux 호환 — db_helper 스마트 폴백 사용"""
     if _USE_DB_HELPER:
         conn, _ = _db_helper_get_db()
-        return conn
-    # 폴백: 직접 복사
-    db_src = BASE_DIR / CONFIG["database"]["path"]
-    tmp_db = TMP_DIR / "wiki_builder_work.db"
-    shutil.copy(db_src, tmp_db)
-    conn = sqlite3.connect(tmp_db)
+    else:
+        db_src = BASE_DIR / CONFIG["database"]["path"]
+        tmp_db = TMP_DIR / "wiki_builder_work.db"
+        shutil.copy(db_src, tmp_db)
+        conn = sqlite3.connect(tmp_db)
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -341,6 +340,7 @@ def update_indices(conn=None, meta: dict = None):
     """인제스트 후 인덱스 빠른 업데이트"""
     if conn is None:
         conn = get_conn()
+    conn.row_factory = sqlite3.Row
     build_main_index(conn)
     build_topic_index(conn)
     build_school_index(conn)

@@ -23,6 +23,11 @@ from typing import Optional
 from dotenv import load_dotenv
 load_dotenv()
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 try:
     import fitz          # PyMuPDF
     import pdfplumber
@@ -371,9 +376,11 @@ def save_to_db(conn: sqlite3.Connection, problem_id: str, problem: dict,
                classified: dict, meta: dict, md_path: str):
     """문제를 SQLite DB에 저장"""
     conn.execute("""
-        INSERT OR REPLACE INTO problems VALUES (
-            ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
-        )
+        INSERT OR REPLACE INTO problems
+            (id, title, grade, domain, topic, concept, difficulty,
+             source_type, year, school, exam_type, answer, problem_number,
+             source_pdf, solution_steps, tags, raw_text, md_path, created_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (
         problem_id,
         classified.get("title", ""),
