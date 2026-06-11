@@ -20,6 +20,8 @@ import os, sys, re, json, yaml, hashlib, sqlite3, argparse, logging
 from pathlib import Path
 from datetime import datetime
 from typing import Optional
+from dotenv import load_dotenv
+load_dotenv()
 
 try:
     import fitz          # PyMuPDF
