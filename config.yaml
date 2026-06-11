@@ -1,0 +1,60 @@
+# ============================================================
+# Math Problem Wiki — Configuration
+# ============================================================
+
+# API 설정 (사용할 AI 서비스)
+api:
+  # Claude API (문제 분류, 해설 생성)
+  anthropic:
+    model: "claude-3-5-sonnet-20241022"
+    max_tokens: 2048
+    # api_key는 환경변수 ANTHROPIC_API_KEY 에서 읽음
+
+  # 임베딩 모델 (로컬, 무료)
+  embedding:
+    model: "jhgan/ko-sroberta-multitask"   # 한국어 특화 임베딩
+    fallback: "paraphrase-multilingual-MiniLM-L12-v2"  # 대안
+    dimension: 768
+
+# OCR 설정
+ocr:
+  engine: "tesseract"       # tesseract 또는 easyocr
+  language: "kor+eng+equ"  # 한국어 + 영어 + 수식
+  dpi: 300
+  # 수식 인식을 위해 pix2tex(LaTeX OCR) 병행 권장
+
+# 처리 설정
+processing:
+  batch_size: 10            # 한 번에 처리할 문제 수
+  min_problem_length: 20    # 최소 문제 텍스트 길이
+  problem_separator_patterns:
+    - "^\\d+\\."            # "1." "2." 형태
+    - "^\\[\\d+\\]"         # "[1]" "[2]" 형태
+    - "^문제\\s*\\d+"       # "문제 1" 형태
+    - "^제\\s*\\d+\\s*문"   # "제 1 문" 형태
+
+# 유사도 검색 설정
+search:
+  top_k: 10                 # 기본 유사문제 반환 수
+  min_similarity: 0.7       # 최소 유사도 임계값
+  weights:
+    embedding: 0.6          # 임베딩 유사도 가중치
+    topic: 0.3              # 동일 단원 가중치
+    difficulty: 0.1         # 동일 난이도 가중치
+
+# 위키 설정
+wiki:
+  auto_update: true         # 문제 추가 시 인덱스 자동 업데이트
+  generate_solution: true   # AI 해설 자동 생성 여부
+  similar_problem_count: 5  # 각 문제 페이지에 표시할 유사문제 수
+
+# 데이터베이스
+database:
+  path: "db/problems.db"
+  chroma_path: "embeddings/chroma"
+
+# 로깅
+logging:
+  level: "INFO"
+  file: "logs/ingest.log"
+  max_bytes: 10485760  # 10MB

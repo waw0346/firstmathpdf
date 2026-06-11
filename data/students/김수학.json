@@ -1,0 +1,42 @@
+{
+  "name": "김수학",
+  "homework": [
+    {
+      "hw_id": "HW_2026-05-27_김수학",
+      "student": "김수학",
+      "assigned": "2026-05-27",
+      "due": "1주일 후",
+      "filters": {
+        "difficulty": "하"
+      },
+      "problems": [
+        {
+          "problem_id": "2025_수능_고3_001",
+          "title": "거듭제곱근 계산",
+          "difficulty": "하",
+          "status": "미제출",
+          "score": null,
+          "submitted_at": null
+        },
+        {
+          "problem_id": "2025_수능_고3_002",
+          "title": "미분계수 계산",
+          "difficulty": "하",
+          "status": "미제출",
+          "score": null,
+          "submitted_at": null
+        },
+        {
+          "problem_id": "2025_수능_고3_확통_023",
+          "title": "이항정리 계수",
+          "difficulty": "하",
+          "status": "미제출",
+          "score": null,
+          "submitted_at": null
+        }
+      ],
+      "total": 3,
+      "completed": 0
+    }
+  ]
+}

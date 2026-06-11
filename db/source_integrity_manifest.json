@@ -1,0 +1,92 @@
+{
+  "policy": "원본문제·원본정답·원본해설은 변형 금지. 추가 해설만 별도 생성 가능.",
+  "generated_at": "2026-06-06T11:14:49.692752",
+  "files": {
+    "sources/2025/2025 10월 고3 전국연합학력평가 수학 문제지.pdf": {
+      "size": 1400729,
+      "mtime": 1780041864.0,
+      "protected_type": "original_problem",
+      "sha256": null,
+      "readable": false,
+      "error": "permission_denied: [Errno 13] Permission denied: 'C:\\\\Users\\\\oem\\\\Documents\\\\math_llm\\\\sources\\\\2025\\\\2025 10월 고3 전국연합학력평가 수학 문제지.pdf'"
+    },
+    "sources/2025/2025 10월 고3 전국연합학력평가 수학 정답 및 해설.pdf": {
+      "size": 313970,
+      "mtime": 1780041868.0,
+      "protected_type": "original_solution",
+      "sha256": null,
+      "readable": false,
+      "error": "permission_denied: [Errno 13] Permission denied: 'C:\\\\Users\\\\oem\\\\Documents\\\\math_llm\\\\sources\\\\2025\\\\2025 10월 고3 전국연합학력평가 수학 정답 및 해설.pdf'"
+    },
+    "sources/2025/2025수능_수학문제.pdf": {
+      "size": 1090050,
+      "mtime": 1779860975.847675,
+      "protected_type": "original_problem",
+      "sha256": "ad13d3f1858b880e79384e65fffd6bcb762e52b3bacd3be0a1e0c879675abe86",
+      "readable": true
+    },
+    "sources/2025/2025수능_수학문제정답.pdf": {
+      "size": 296524,
+      "mtime": 1779860975.8975708,
+      "protected_type": "original_answer",
+      "sha256": "987fa768dc669042df4e018a157535407583e5564cd540cac7ddd2fd414b5e9e",
+      "readable": true
+    },
+    "sources/2026/2026 5월 고3 전국연합학력평가 수학 문제.pdf": {
+      "size": 558595,
+      "mtime": 1780041762.0,
+      "protected_type": "original_problem",
+      "sha256": "a1c4b9d05f06eb95fe4ed2d6a831cd1f74682a49957b75549c6c65c035ffcd2d",
+      "readable": true
+    },
+    "sources/2026/2026 5월 고3 전국연합학력평가 수학 해설.pdf": {
+      "size": 659046,
+      "mtime": 1780041764.0,
+      "protected_type": "original_solution",
+      "sha256": "40d276d5fcab6fdc727b9029ec37d1be9538c91ba9a04694728e8d305335a46f",
+      "readable": true
+    },
+    "sources/2026/2026 대학수학능력시험 6월 모의평가 수학 문제지.pdf": {
+      "size": 1532148,
+      "mtime": 1780041828.0,
+      "protected_type": "original_problem",
+      "sha256": "923a16e63f28fe1f26d478c6f6bb03306a16072c937671f3b06ca42857a78274",
+      "readable": true
+    },
+    "sources/2026/2026 대학수학능력시험 6월 모의평가 수학 해설지(ebs).pdf": {
+      "size": 562595,
+      "mtime": 1780041830.0,
+      "protected_type": "original_solution",
+      "sha256": "1cde3550a1291db7af4216e8aa43df3b2afff4ecc7f026274be9b93029c58d59",
+      "readable": true
+    },
+    "sources/2026/2026 대학수학능력시험 9월 모의평가 수학 해설지(EBS) (2).pdf": {
+      "size": 484964,
+      "mtime": 1780041856.0,
+      "protected_type": "original_solution",
+      "sha256": "7d7aebabaad159b7d4911c32f836fe9d1ac1f139f8bad90d9c4373244e7ad274",
+      "readable": true
+    },
+    "sources/2026/2026 대학수학능력시험 수학 해설지(EBS).pdf": {
+      "size": 551584,
+      "mtime": 1780708960.399365,
+      "protected_type": "original_solution",
+      "sha256": "ee6cd3fdb85ad30a476b40564b9458b08386964e6b641a8f028557b1448ddce4",
+      "readable": true
+    },
+    "sources/2026/2026수능_수학문제.pdf": {
+      "size": 2485943,
+      "mtime": 1779098640.2844887,
+      "protected_type": "original_problem",
+      "sha256": "74e7e4a614559c3a94618e568d00b0392b12e25b6f5caa5e86334768f080d850",
+      "readable": true
+    },
+    "sources/2026/2026학년도 대학수학능력시험 9월 모의평가 수학 문제 (2).pdf": {
+      "size": 1362729,
+      "mtime": 1780041854.0,
+      "protected_type": "original_problem",
+      "sha256": "3d3005f4e37858cb6c7a52fcb5ae197823c87a49dd453ca42ec8c181de29ced9",
+      "readable": true
+    }
+  }
+}

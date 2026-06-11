@@ -1,0 +1,12 @@
+{
+  "kanban-plugin": "basic",
+  "date-picker-week-start": 0,
+  "lane-width": 280,
+  "show-checkboxes": true,
+  "hide-card-count": false,
+  "link-date-to-daily-note": false,
+  "new-note-folder": "wiki",
+  "new-line-trigger": "shift-enter",
+  "max-archive-size": -1,
+  "time-format": "HH:mm"
+}

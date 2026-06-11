@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수학의 지름길 — 문제 뷰어 (100% 원본 이미지)</title>
+<style>
+  :root {
+    --bg: #f0f2f5;
+    --panel: #ffffff;
+    --accent: #2563eb;
+    --accent2: #0ea5e9;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --diff-하: #16a34a;
+    --diff-중: #ca8a04;
+    --diff-상: #dc2626;
+    --diff-최상: #7c3aed;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── 헤더 ── */
+  .header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 60%, #0ea5e9 100%);
+    color: white;
+    padding: 16px 24px;
+    display: flex; align-items: center; gap: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .header h1 { font-size: 18px; font-weight: 700; }
+  .header small { font-size: 12px; opacity: .75; }
+  .header-badge {
+    margin-left: auto;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* ── 메인 레이아웃 ── */
+  .layout {
+    display: grid;
+    grid-template-columns: 280px 1fr 260px;
+    gap: 0;
+    min-height: calc(100vh - 56px);
+  }
+
+  /* ── 왼쪽: 문제 목록 ── */
+  .sidebar-left {
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    max-height: calc(100vh - 56px);
+    position: sticky; top: 56px;
+  }
+  .sidebar-title {
+    padding: 12px 16px;
+    font-size: 12px; font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border);
+    background: #f8fafc;
+  }
+  .filter-bar {
+    padding: 8px 12px;
+    display: flex; gap: 6px; flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+    background: #f8fafc;
+  }
+  .filter-btn {
+    padding: 3px 8px; border-radius: 12px; border: 1px solid var(--border);
+    font-size: 11px; cursor: pointer; background: white;
+    transition: all .15s;
+  }
+  .filter-btn:hover, .filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+  .prob-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background .12s;
+  }
+  .prob-item:hover { background: #eff6ff; }
+  .prob-item.active { background: #dbeafe; border-left: 3px solid var(--accent); }
+  .prob-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; flex-shrink: 0;
+    background: var(--accent); color: white;
+  }
+  .prob-info { flex: 1; min-width: 0; }
+  .prob-title { font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .prob-meta { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .diff-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* ── 중앙: 문제 뷰어 ── */
+  .main-viewer {
+    padding: 20px;
+    overflow-y: auto;
+    max-height: calc(100vh - 56px);
+  }
+  .viewer-card {
+    background: var(--panel);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .viewer-header {
+    background: linear-gradient(90deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 14px 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .viewer-num {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 800;
+  }
+  .viewer-title { font-size: 16px; font-weight: 700; }
+  .viewer-subtitle { font-size: 12px; opacity: .8; }
+  .badge {
+    padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 700;
+    display: inline-block;
+  }
+  .badge-diff {
+    margin-left: auto;
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.4);
+  }
+
+  /* ── 원본 이미지 컨테이너 ── */
+  .image-section {
+    padding: 16px 20px;
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border);
+  }
+  .image-label {
+    font-size: 11px; font-weight: 700; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .image-label::before { content: '📄'; font-size: 13px; }
+  .problem-image {
+    width: 100%;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    display: block;
+    background: white;
+    max-height: 600px;
+    object-fit: contain;
+    cursor: zoom-in;
+  }
+  .problem-image:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+  .no-image {
+    background: #f1f5f9; border: 2px dashed var(--border);
+    border-radius: 8px; padding: 40px; text-align: center;
+    color: var(--muted); font-size: 14px;
+  }
+
+  /* ── 메타데이터 그리드 ── */
+  .meta-section { padding: 16px 20px; }
+  .meta-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px; margin-bottom: 14px;
+  }
+  .meta-item { background: #f8fafc; border-radius: 8px; padding: 10px 12px; }
+  .meta-label { font-size: 10px; color: var(--muted); font-weight: 700; text-transform: uppercase; margin-bottom: 2px; }
+  .meta-value { font-size: 13px; font-weight: 600; }
+  .answer-box {
+    background: linear-gradient(90deg, #eff6ff, #e0f2fe);
+    border: 2px solid var(--accent);
+    border-radius: 8px; padding: 12px 16px;
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 12px;
+  }
+  .answer-label { font-size: 13px; font-weight: 700; color: var(--muted); }
+  .answer-value { font-size: 22px; font-weight: 800; color: var(--accent); }
+
+  /* 개념 태그 */
+  .concept-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600;
+    background: #e0f2fe; color: #0369a1;
+  }
+  .chip.tag { background: #f0fdf4; color: #166534; }
+
+  /* 원본 텍스트 (폴더블) */
+  .raw-text-section { padding: 0 20px 16px; }
+  details summary {
+    cursor: pointer; padding: 8px 12px;
+    background: #f8fafc; border-radius: 6px;
+    font-size: 12px; font-weight: 600; color: var(--muted);
+    border: 1px solid var(--border);
+    user-select: none;
+  }
+  details[open] summary { border-radius: 6px 6px 0 0; }
+  .raw-text-content {
+    background: #fafafa;
+    border: 1px solid var(--border); border-top: none;
+    border-radius: 0 0 6px 6px;
+    padding: 12px; font-size: 12px;
+    line-height: 1.7; color: var(--text);
+    white-space: pre-wrap; font-family: 'D2Coding', monospace;
+  }
+
+  /* ── 오른쪽: 유사 문제 ── */
+  .sidebar-right {
+    background: var(--panel);
+    border-left: 1px solid var(--border);
+    overflow-y: auto;
+    max-height: calc(100vh - 56px);
+    position: sticky; top: 56px;
+  }
+  .similar-section { padding: 12px; }
+  .similar-header {
+    font-size: 12px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    padding-bottom: 6px; border-bottom: 1px solid var(--border);
+  }
+  .similar-card {
+    border: 1px solid var(--border); border-radius: 8px; padding: 10px;
+    margin-bottom: 8px; cursor: pointer;
+    transition: all .15s;
+    background: #f8fafc;
+  }
+  .similar-card:hover { border-color: var(--accent); background: #eff6ff; transform: translateX(2px); }
+  .similar-card-num { font-size: 11px; color: var(--muted); }
+  .similar-card-title { font-size: 12px; font-weight: 600; margin-top: 2px; }
+  .similar-sim-bar {
+    margin-top: 6px; background: #e2e8f0; border-radius: 4px; height: 4px; overflow: hidden;
+  }
+  .similar-sim-fill { height: 100%; background: var(--accent); border-radius: 4px; }
+  .similar-sim-label { font-size: 10px; color: var(--muted); margin-top: 2px; text-align: right; }
+
+  /* ── 페이지 네비게이션 ── */
+  .page-nav {
+    background: var(--panel); border-top: 1px solid var(--border);
+    padding: 10px 20px; display: flex; gap: 8px; align-items: center;
+    justify-content: space-between;
+    position: sticky; bottom: 0;
+  }
+  .nav-btn {
+    padding: 6px 16px; border-radius: 6px; border: 1px solid var(--border);
+    background: white; cursor: pointer; font-size: 13px;
+    transition: all .15s;
+  }
+  .nav-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+  .nav-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+  /* ── 이미지 줌 오버레이 ── */
+  .zoom-overlay {
+    display: none; position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,0.85); cursor: zoom-out;
+    align-items: center; justify-content: center;
+  }
+  .zoom-overlay.active { display: flex; }
+  .zoom-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+
+  /* ── 난이도 색상 ── */
+  [data-diff="하"] .diff-dot { background: var(--diff-하); }
+  [data-diff="중"] .diff-dot { background: var(--diff-중); }
+  [data-diff="상"] .diff-dot { background: var(--diff-상); }
+  [data-diff="최상"] .diff-dot { background: var(--diff-최상); }
+  [data-diff="하"] .prob-num { background: var(--diff-하); }
+  [data-diff="중"] .prob-num { background: var(--diff-중); }
+  [data-diff="상"] .prob-num { background: var(--diff-상); }
+  [data-diff="최상"] .prob-num { background: var(--diff-최상); }
+
+  /* 반응형 */
+  @media (max-width: 1024px) {
+    .layout { grid-template-columns: 220px 1fr; }
+    .sidebar-right { display: none; }
+  }
+  @media (max-width: 768px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar-left { display: none; }
+    .meta-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 줌 오버레이 -->
+<div class="zoom-overlay" id="zoomOverlay" onclick="closeZoom()">
+  <img id="zoomImg" src="" alt="">
+</div>
+
+<!-- 헤더 -->
+<div class="header">
+  <div>
+    <h1>🏫 수학의 지름길 — 문제 뷰어</h1>
+    <small>원본 PDF 이미지 기반 · 100% 정확도 보장</small>
+  </div>
+  <div class="header-badge" id="problemCount">로딩 중...</div>
+</div>
+
+<!-- 메인 레이아웃 -->
+<div class="layout">
+
+  <!-- 왼쪽: 문제 목록 -->
+  <div class="sidebar-left">
+    <div class="sidebar-title">📋 문제 목록</div>
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterList('all',this)">전체</button>
+      <button class="filter-btn" onclick="filterList('하',this)">🟢 하</button>
+      <button class="filter-btn" onclick="filterList('중',this)">🟡 중</button>
+      <button class="filter-btn" onclick="filterList('상',this)">🔴 상</button>
+      <button class="filter-btn" onclick="filterList('최상',this)">⚫ 최상</button>
+    </div>
+    <div id="probList"></div>
+  </div>
+
+  <!-- 중앙: 문제 뷰어 -->
+  <div class="main-viewer" id="mainViewer">
+    <div style="text-align:center;padding:60px;color:var(--muted)">
+      <div style="font-size:48px">📖</div>
+      <div style="font-size:18px;font-weight:600;margin-top:16px">왼쪽에서 문제를 선택하세요</div>
+      <div style="font-size:13px;margin-top:8px">원본 PDF 이미지로 100% 정확하게 표시됩니다</div>
+    </div>
+  </div>
+
+  <!-- 오른쪽: 유사 문제 -->
+  <div class="sidebar-right">
+    <div class="similar-section">
+      <div class="similar-header">🔗 유사 문제</div>
+      <div id="similarList">
+        <div style="color:var(--muted);font-size:12px;text-align:center;padding:20px">
+          문제를 선택하면<br>유사문제가 표시됩니다
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const DIFF_ICON = { '하': '🟢', '중': '🟡', '상': '🔴', '최상': '⚫' };
+const DIFF_COLOR = { '하': '#16a34a', '중': '#ca8a04', '상': '#dc2626', '최상': '#7c3aed' };
+let problems = [];
+let currentIdx = 0;
+let filterDiff = 'all';
+
+// ── 데이터 로드 ──────────────────────────────────────────
+async function loadData() {
+  try {
+    const r = await fetch('../db/problems_full.json');
+    problems = await r.json();
+    document.getElementById('problemCount').textContent = `총 ${problems.length}문제`;
+    renderList();
+    if (problems.length > 0) selectProblem(0);
+  } catch (e) {
+    // fallback: 내장 데이터
+    loadFallback();
+  }
+}
+
+function loadFallback() {
+  // problems_full.json 없을 때 최소 표시
+  document.getElementById('mainViewer').innerHTML = `
+    <div style="padding:40px;color:var(--muted);text-align:center">
+      <div style="font-size:32px">⚠️</div>
+      <div style="font-size:14px;margin-top:12px">
+        <b>problems_full.json</b> 파일이 필요합니다.<br>
+        <code style="background:#f1f5f9;padding:4px 8px;border-radius:4px;font-size:12px">
+          python scripts/render_pages.py --all
+        </code> 실행 후 새로고침 하세요.
+      </div>
+    </div>`;
+}
+
+// ── 목록 렌더링 ──────────────────────────────────────────
+function renderList() {
+  const container = document.getElementById('probList');
+  container.innerHTML = '';
+
+  const filtered = filterDiff === 'all'
+    ? problems
+    : problems.filter(p => p.difficulty === filterDiff);
+
+  filtered.forEach((p, visIdx) => {
+    const origIdx = problems.indexOf(p);
+    const div = document.createElement('div');
+    div.className = 'prob-item';
+    div.dataset.diff = p.difficulty;
+    div.id = `list-item-${origIdx}`;
+    div.innerHTML = `
+      <div class="prob-num">${p.problem_number}</div>
+      <div class="prob-info">
+        <div class="prob-title">${p.title}</div>
+        <div class="prob-meta">${p.domain} · ${p.topic}</div>
+      </div>
+      <div class="diff-dot"></div>
+    `;
+    div.onclick = () => selectProblem(origIdx);
+    container.appendChild(div);
+  });
+}
+
+function filterList(diff, btn) {
+  filterDiff = diff;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderList();
+}
+
+// ── 문제 표시 ──────────────────────────────────────────
+function selectProblem(idx) {
+  currentIdx = idx;
+  const p = problems[idx];
+
+  // 목록 하이라이트
+  document.querySelectorAll('.prob-item').forEach(el => el.classList.remove('active'));
+  const item = document.getElementById(`list-item-${idx}`);
+  if (item) { item.classList.add('active'); item.scrollIntoView({ block: 'nearest' }); }
+
+  // 이미지 경로
+  const cropPath = p.crop_path || `sources/crops/${p.id}.jpg`;
+  const imgSrc   = `../${cropPath}`;
+
+  // 개념 태그
+  const concepts = (p.concept || []).map(c => `<span class="chip">${c}</span>`).join('');
+  const tags     = (p.tags    || []).map(t => `<span class="chip tag">${t}</span>`).join('');
+
+  // 난이도 색
+  const diffColor = DIFF_COLOR[p.difficulty] || '#64748b';
+  const diffIcon  = DIFF_ICON[p.difficulty] || '';
+
+  const mainViewer = document.getElementById('mainViewer');
+  mainViewer.innerHTML = `
+    <div class="viewer-card">
+      <!-- 헤더 -->
+      <div class="viewer-header">
+        <div class="viewer-num">${p.problem_number}</div>
+        <div>
+          <div class="viewer-title">${p.title}</div>
+          <div class="viewer-subtitle">${p.school} ${p.year} · ${p.exam_type}</div>
+        </div>
+        <div class="badge badge-diff">${diffIcon} ${p.difficulty}</div>
+      </div>
+
+      <!-- 원본 이미지 -->
+      <div class="image-section">
+        <div class="image-label">원본 PDF 이미지 (클릭하면 확대)</div>
+        <img class="problem-image"
+          src="${imgSrc}"
+          alt="${p.title}"
+          onclick="openZoom('${imgSrc}')"
+          onerror="this.parentElement.innerHTML='<div class=no-image>📷 이미지를 불러올 수 없습니다<br><small>python scripts/render_pages.py --all 실행 후 새로고침</small></div>'"
+        >
+      </div>
+
+      <!-- 정답 -->
+      <div class="meta-section">
+        <div class="answer-box">
+          <span class="answer-label">정답</span>
+          <span class="answer-value">${p.answer || '—'}</span>
+          <span style="margin-left:auto;font-size:12px;color:var(--muted)">배점: ${p.score || '?'}점</span>
+        </div>
+
+        <!-- 메타 그리드 -->
+        <div class="meta-grid">
+          <div class="meta-item">
+            <div class="meta-label">학년</div>
+            <div class="meta-value">${p.grade}</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">영역</div>
+            <div class="meta-value">${p.domain}</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">단원</div>
+            <div class="meta-value">${p.topic}</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">출처 유형</div>
+            <div class="meta-value">${p.source_type}</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">연도</div>
+            <div class="meta-value">${p.year}</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">PDF 페이지</div>
+            <div class="meta-value">${p.page_number || '?'}p</div>
+          </div>
+        </div>
+
+        <!-- 핵심 개념 -->
+        ${concepts ? `
+        <div style="margin-bottom:10px">
+          <div class="meta-label" style="margin-bottom:6px">핵심 개념</div>
+          <div class="concept-chips">${concepts}</div>
+        </div>` : ''}
+
+        <!-- 태그 -->
+        ${tags ? `
+        <div>
+          <div class="meta-label" style="margin-bottom:6px">태그</div>
+          <div class="concept-chips">${tags}</div>
+        </div>` : ''}
+      </div>
+
+      <!-- 원문 텍스트 (접이식) -->
+      ${p.raw_text ? `
+      <div class="raw-text-section">
+        <details>
+          <summary>📝 LLM 인식 텍스트 보기 (참고용 — 원본 이미지가 우선)</summary>
+          <div class="raw-text-content">${escHtml(p.raw_text)}</div>
+        </details>
+      </div>` : ''}
+    </div>
+
+    <!-- 이전/다음 네비게이션 -->
+    <div class="page-nav">
+      <button class="nav-btn" onclick="selectProblem(${idx-1})" ${idx===0?'disabled':''}>◀ 이전 문제</button>
+      <span style="font-size:12px;color:var(--muted)">${idx+1} / ${problems.length}</span>
+      <button class="nav-btn" onclick="selectProblem(${idx+1})" ${idx===problems.length-1?'disabled':''}>다음 문제 ▶</button>
+    </div>
+  `;
+
+  // 유사 문제 표시
+  renderSimilar(p);
+}
+
+// ── 유사 문제 ──────────────────────────────────────────
+function renderSimilar(p) {
+  const container = document.getElementById('similarList');
+  const similar = p.similar || [];
+
+  if (!similar.length) {
+    container.innerHTML = '<div style="color:var(--muted);font-size:12px;text-align:center;padding:20px">유사문제 없음</div>';
+    return;
+  }
+
+  container.innerHTML = similar.map(s => {
+    const sp = problems.find(x => x.id === s.id);
+    const pct = Math.round(s.sim * 100);
+    if (!sp) return '';
+    return `
+      <div class="similar-card" onclick="selectProblem(${problems.indexOf(sp)})">
+        <div class="similar-card-num">${sp.problem_number}번 · ${sp.difficulty}</div>
+        <div class="similar-card-title">${sp.title}</div>
+        <div class="similar-card-num" style="margin-top:2px">${sp.domain} · ${sp.topic}</div>
+        <div class="similar-sim-bar">
+          <div class="similar-sim-fill" style="width:${pct}%"></div>
+        </div>
+        <div class="similar-sim-label">유사도 ${pct}%</div>
+      </div>`;
+  }).join('');
+}
+
+// ── 이미지 줌 ──────────────────────────────────────────
+function openZoom(src) {
+  document.getElementById('zoomImg').src = src;
+  document.getElementById('zoomOverlay').classList.add('active');
+}
+function closeZoom() {
+  document.getElementById('zoomOverlay').classList.remove('active');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeZoom(); });
+
+// ── 유틸리티 ──────────────────────────────────────────
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ── 키보드 네비게이션 ──────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' && currentIdx < problems.length-1) selectProblem(currentIdx+1);
+  if (e.key === 'ArrowLeft'  && currentIdx > 0)                 selectProblem(currentIdx-1);
+});
+
+// ── 초기화 ──────────────────────────────────────────
+loadData();
+</script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+# ============================================================
+# Math LLM Wiki — 멀티 에이전트 설정
+# ============================================================
+version: "2.0"
+project: "수학의 지름길 LLM-Wiki"
+created: "2026-05-27"
+updated: "2026-06-05"
+
+# ──────────────────────────────────────────────────────────────
+# 에이전트 레지스트리
+# ──────────────────────────────────────────────────────────────
+agents:
+
+  # ── LAYER 1: 총괄 ──────────────────────────────────────────
+  captain:
+    name: "Captain Agent"
+    tier: 1
+    script: "agents/coordinator.py"
+    role: "프로젝트 총괄 지휘 · 에이전트 조율 · 목표 정합성"
+    triggers:
+      - "manual"
+      - "daily_summary"
+      - "error_escalation"
+    reports_to: null   # 최상위
+    supervises: ["integrity_guard", "db_guardian", "senior_engineer", "verification", "concept_tagger", "student_success", "qa"]
+    priority: critical
+
+  senior_engineer:
+    name: "Senior Engineer Agent"
+    tier: 1
+    script: "agents/senior_engineer.py"
+    role: "DB 안정성·보안·코드 품질·확장성 점검"
+    triggers:
+      - "post_ingest"
+      - "daily_health_check"
+      - "on_error"
+    reports_to: "captain"
+    supervises: ["ingest", "render", "wiki", "search", "obsidian_curator"]
+    priority: critical
+
+  db_guardian:
+    name: "DB Guardian Agent"
+    tier: 1
+    script: "agents/db_guardian_agent.py"
+    role: "운영 DB 생존성·스냅샷·복구 기준점 관리"
+    triggers:
+      - "pre_pipeline"
+      - "db_zero_byte"
+      - "before_weekly_check"
+    reports_to: "captain"
+    priority: critical
+
+  integrity_guard:
+    name: "Integrity Guard Agent"
+    tier: 1
+    script: "agents/integrity_guard_agent.py"
+    role: "원본문제·원본정답·원본해설 불변성 감시"
+    triggers:
+      - "pre_pipeline"
+      - "before_ingest"
+      - "before_solution_work"
+      - "weekly_integrity_audit"
+    reports_to: "captain"
+    priority: critical
+
+  # ── LAYER 2: 인프라 ────────────────────────────────────────
+  ingest:
+    name: "Ingest Agent"
+    tier: 2
+    script: "agents/ingest_agent.py"
+    role: "PDF·이미지·Word 파싱 · OCR · 메타데이터 추출"
+    triggers:
+      - "new_file_detected"
+      - "manual_ingest"
+    reports_to: "senior_engineer"
+    calls: ["render", "wiki", "search"]
+    priority: high
+    supported_inputs: ["pdf", "jpg", "png", "docx", "txt"]
+
+  render:
+    name: "Render Agent"
+    tier: 2
+    script: "agents/render_agent.py"
+    role: "PDF → 고해상도 이미지 + 문제 크롭"
+    triggers:
+      - "post_ingest"
+      - "manual"
+    reports_to: "senior_engineer"
+    priority: high
+
+  wiki:
+    name: "Wiki Agent"
+    tier: 2
+    script: "agents/wiki_agent.py"
+    role: "마크다운 위키 생성·업데이트·인덱스 관리"
+    triggers:
+      - "post_ingest"
+      - "post_similarity"
+    reports_to: "senior_engineer"
+    priority: medium
+
+  obsidian_curator:
+    name: "Obsidian Curator Agent"
+    tier: 2
+    script: "agents/obsidian_curator_agent.py"
+    role: "Obsidian 문제 노트 frontmatter·검수 필드·대시보드 정합성 관리"
+    triggers:
+      - "post_obsidian_sync"
+      - "before_sync_from_obsidian"
+      - "manual_audit"
+    reports_to: "senior_engineer"
+    priority: high
+
+  search:
+    name: "Search Agent"
+    tier: 2
+    script: "agents/search_agent.py"
+    role: "유사문제 탐색 · 임베딩 · 쿼리 처리"
+    triggers:
+      - "post_ingest"
+      - "query_request"
+    reports_to: "senior_engineer"
+    priority: medium
+
+  verification:
+    name: "Verification Agent"
+    tier: 2
+    script: "agents/verification_agent.py"
+    role: "이미지·정답·해설·서명 3단계 검수 진행률 관리"
+    triggers:
+      - "daily_review"
+      - "post_ingest"
+      - "before_db_confirm"
+    reports_to: "captain"
+    priority: high
+
+  # ── LAYER 3: 도메인 ────────────────────────────────────────
+  math_expert:
+    name: "Math Expert Agent"
+    tier: 3
+    script: "agents/math_expert_agent.py"
+    role: "정답 검증 · 풀이 해설 · 개념 분류 · 오류 탐지"
+    triggers:
+      - "verify_request"
+      - "solution_request"
+      - "concept_check"
+    reports_to: "captain"
+    priority: high
+    latex_output: true
+
+  concept_tagger:
+    name: "Concept Tagging Agent"
+    tier: 3
+    script: "agents/concept_tagging_agent.py"
+    role: "개념 태그 체계화·우선 태깅 대상 산출·concepts 노트 연결"
+    triggers:
+      - "after_basic_review"
+      - "weekly_concept_pass"
+    reports_to: "captain"
+    priority: medium
+
+  teacher:
+    name: "Teacher Agent"
+    tier: 3
+    script: "agents/teacher_agent.py"
+    role: "수업 계획 · 과제 관리 · Marp 슬라이드"
+    triggers:
+      - "lesson_plan_request"
+      - "homework_assign"
+      - "slide_generate"
+    reports_to: "captain"
+    priority: medium
+
+  student:
+    name: "Student Agent"
+    tier: 3
+    script: "agents/student_agent.py"
+    role: "풀이 시뮬레이션 · 오류 패턴 분석 · 진도 추적"
+    triggers:
+      - "problem_solve_request"
+      - "test_mode"
+    reports_to: "teacher"
+    priority: medium
+    simulation_levels: ["하", "중", "상"]
+
+  student_success:
+    name: "Student Success Agent"
+    tier: 3
+    script: "agents/student_success_agent.py"
+    role: "학생별 진단·오답 이력·맞춤 문제지 준비 상태 관리"
+    triggers:
+      - "student_session"
+      - "after_concept_tagging"
+      - "weekly_student_review"
+    reports_to: "teacher"
+    priority: medium
+
+  jinwoo_proxy:
+    name: "Jinwoo Proxy Agent"
+    tier: 3
+    script: "agents/jinwoo_proxy_agent.py"
+    role: "진우 학생 전용 dry-run 진단 세트·가상 풀이 실행"
+    triggers:
+      - "jinwoo_diagnostic"
+      - "student_simulation"
+    reports_to: "student_success"
+    priority: medium
+
+  answer_solution_curator:
+    name: "Answer Solution Curator Agent"
+    tier: 3
+    script: "agents/answer_solution_curator_agent.py"
+    role: "정답 누락·해설 미완료 큐 생성, 추가 해설 입력 작업 배정"
+    triggers:
+      - "solution_queue"
+      - "after_integrity_audit"
+      - "before_stage3_review"
+    reports_to: "math_expert"
+    priority: high
+
+  qa:
+    name: "QA Agent"
+    tier: 3
+    script: "agents/qa_agent.py"
+    role: "자동 테스트 · 정확도 검증 · 오류 보고"
+    triggers:
+      - "post_ingest"
+      - "manual_test"
+      - "regression_check"
+    reports_to: "senior_engineer"
+    priority: high
+    accuracy_threshold: 0.95
+
+# ──────────────────────────────────────────────────────────────
+# 통신 프로토콜
+# ──────────────────────────────────────────────────────────────
+messaging:
+  format: "json"
+  log_dir: "logs/agents/"
+  message_fields:
+    - from_agent
+    - to_agent
+    - task_id
+    - task_type
+    - payload
+    - priority        # critical / high / medium / low
+    - timestamp
+    - status          # pending / in_progress / completed / failed
+
+# ──────────────────────────────────────────────────────────────
+# 공유 인프라
+# ──────────────────────────────────────────────────────────────
+shared_resources:
+  db: "db/problems.db"
+  task_queue: "db/task_queue.db"
+  sources: "sources/"
+  crops: "sources/crops/"
+  pages: "sources/pages/"
+  wiki: "wiki/problems/"
+  logs: "logs/agents/"
+  students: "data/students/"
+  command_center: "wiki/00_AGENT_COMMAND_CENTER.md"
+  immutability_policy: "wiki/00_IMMUTABILITY_POLICY.md"
+  source_integrity_manifest: "db/source_integrity_manifest.json"
+
+immutability:
+  protected:
+    - "sources/**/*.pdf"
+  forbidden:
+    - "원본문제 수정/덮어쓰기"
+    - "원본정답 수정/덮어쓰기"
+    - "원본해설 수정/덮어쓰기"
+    - "기존 해설을 추가 해설로 대체"
+  allowed:
+    - "crop 이미지 생성"
+    - "OCR/메타데이터 파생 생성"
+    - "별도 필드/노트/테이블에 추가 해설 작성"
+
+# ──────────────────────────────────────────────────────────────
+# Senior Engineer 점검 항목
+# ──────────────────────────────────────────────────────────────
+health_checks:
+  db_stability:
+    - check: "db_file_size > 0"
+      action: "db_guardian_restore_latest"
+    - check: "journal_file_absent"
+      action: "alert_virtio_issue"
+    - check: "row_count_matches_md_count"
+      action: "sync_wiki"
+  security:
+    - check: "no_sql_injection_params"
+    - check: "no_plain_text_passwords"
+    - check: "api_key_not_in_code"
+  performance:
+    - check: "embed_time < 30s"
+    - check: "search_query_time < 3s"
+    - check: "ingest_per_problem < 10s"
+  accuracy:
+    - check: "answer_field_not_empty"
+    - check: "crop_image_exists_for_all"
+    - check: "similar_count >= 3_per_problem"

@@ -1,0 +1,1482 @@
+[
+  {
+    "id": "2025_수능_고3_001",
+    "title": "거듭제곱근 계산",
+    "grade": "고3",
+    "domain": "수와연산",
+    "topic": "지수와 로그",
+    "concept": [
+      "지수법칙",
+      "거듭제곱근"
+    ],
+    "difficulty": "하",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "⑤ 5",
+    "problem_number": 1,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 2,
+    "tags": [
+      "수능",
+      "2025수능",
+      "수와연산",
+      "지수와 로그"
+    ],
+    "raw_text": "√5 × 25^(1/3)의 값은?",
+    "md_path": "wiki/problems/2025_수능_고3_001.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 1,
+    "crop_path": "sources/crops/2025_수능_고3_001.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_008",
+        "sim": 1.0
+      },
+      {
+        "id": "2025_수능_고3_016",
+        "sim": 1.0
+      },
+      {
+        "id": "2025_수능_고3_020",
+        "sim": 0.284
+      },
+      {
+        "id": "2025_수능_고3_기하_023",
+        "sim": 0.14
+      },
+      {
+        "id": "2025_수능_고3_미적_023",
+        "sim": 0.118
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_002",
+    "title": "미분계수 계산",
+    "grade": "고3",
+    "domain": "함수",
+    "topic": "미분",
+    "concept": [
+      "미분계수 정의",
+      "다항함수 미분"
+    ],
+    "difficulty": "하",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "④ 4",
+    "problem_number": 2,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 2,
+    "tags": [
+      "수능",
+      "2025수능",
+      "함수",
+      "미분"
+    ],
+    "raw_text": "f(x)=x³-8x+7, lim_{h→0}[f(2+h)-f(2)]/h = f'(2)\nf'(x)=3x²-8, f'(2)=12-8=4",
+    "md_path": "wiki/problems/2025_수능_고3_002.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 1,
+    "crop_path": "sources/crops/2025_수능_고3_002.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_005",
+        "sim": 0.81
+      },
+      {
+        "id": "2025_수능_고3_019",
+        "sim": 0.742
+      },
+      {
+        "id": "2025_수능_고3_015",
+        "sim": 0.737
+      },
+      {
+        "id": "2025_수능_고3_011",
+        "sim": 0.367
+      },
+      {
+        "id": "2025_수능_고3_017",
+        "sim": 0.348
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_003",
+    "title": "등비수열 공비",
+    "grade": "고3",
+    "domain": "수열",
+    "topic": "등비수열",
+    "concept": [
+      "등비수열",
+      "공비"
+    ],
+    "difficulty": "중",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "⑤ 5",
+    "problem_number": 3,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "수열",
+      "등비수열"
+    ],
+    "raw_text": "공비=k인 등비수열. a₄/a₂ + a₂/a₁ = 30, k=?",
+    "md_path": "wiki/problems/2025_수능_고3_003.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 1,
+    "crop_path": "sources/crops/2025_수능_고3_003.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_018",
+        "sim": 0.52
+      },
+      {
+        "id": "2025_수능_고3_022",
+        "sim": 0.422
+      },
+      {
+        "id": "2025_수능_고3_012",
+        "sim": 0.412
+      },
+      {
+        "id": "2025_수능_고3_008",
+        "sim": 0.116
+      },
+      {
+        "id": "2025_수능_고3_005",
+        "sim": 0.116
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_004",
+    "title": "연속함수 상수",
+    "grade": "고3",
+    "domain": "함수",
+    "topic": "함수의 연속",
+    "concept": [
+      "연속",
+      "좌극한=우극한"
+    ],
+    "difficulty": "중",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "② 7",
+    "problem_number": 4,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "함수",
+      "함수의 연속"
+    ],
+    "raw_text": "f(x)={5x+a(x<-2), x²-a(x≥-2)}, 실수 전체 연속, a=?",
+    "md_path": "wiki/problems/2025_수능_고3_004.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 1,
+    "crop_path": "sources/crops/2025_수능_고3_004.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_005",
+        "sim": 0.371
+      },
+      {
+        "id": "2025_수능_고3_021",
+        "sim": 0.371
+      },
+      {
+        "id": "2025_수능_고3_019",
+        "sim": 0.371
+      },
+      {
+        "id": "2025_수능_고3_017",
+        "sim": 0.344
+      },
+      {
+        "id": "2025_수능_고3_007",
+        "sim": 0.326
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_005",
+    "title": "곱의 미분법",
+    "grade": "고3",
+    "domain": "함수",
+    "topic": "미분",
+    "concept": [
+      "곱의 미분법"
+    ],
+    "difficulty": "중",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "④ 14",
+    "problem_number": 5,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "함수",
+      "미분"
+    ],
+    "raw_text": "f(x)=(x²+1)(3x²-x), f'(1)=?",
+    "md_path": "wiki/problems/2025_수능_고3_005.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 2,
+    "crop_path": "sources/crops/2025_수능_고3_005.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_002",
+        "sim": 0.81
+      },
+      {
+        "id": "2025_수능_고3_019",
+        "sim": 0.778
+      },
+      {
+        "id": "2025_수능_고3_015",
+        "sim": 0.736
+      },
+      {
+        "id": "2025_수능_고3_017",
+        "sim": 0.418
+      },
+      {
+        "id": "2025_수능_고3_011",
+        "sim": 0.392
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_006",
+    "title": "삼각함수 변환",
+    "grade": "고3",
+    "domain": "삼각함수",
+    "topic": "삼각함수",
+    "concept": [
+      "삼각함수 변환"
+    ],
+    "difficulty": "중",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "⑤ 5",
+    "problem_number": 6,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "삼각함수",
+      "삼각함수"
+    ],
+    "raw_text": "cos(π/2+θ)=-1/5, sinθ/(1-cos²θ)=?",
+    "md_path": "wiki/problems/2025_수능_고3_006.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 2,
+    "crop_path": "sources/crops/2025_수능_고3_006.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_010",
+        "sim": 1.0
+      },
+      {
+        "id": "2025_수능_고3_미적_023",
+        "sim": 0.263
+      },
+      {
+        "id": "2025_수능_고3_019",
+        "sim": 0.168
+      },
+      {
+        "id": "2025_수능_고3_005",
+        "sim": 0.153
+      },
+      {
+        "id": "2025_수능_고3_004",
+        "sim": 0.147
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_007",
+    "title": "미적분 기본정리",
+    "grade": "고3",
+    "domain": "함수",
+    "topic": "적분",
+    "concept": [
+      "부정적분",
+      "미적분의 기본정리"
+    ],
+    "difficulty": "중",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "③ 11",
+    "problem_number": 7,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "함수",
+      "적분"
+    ],
+    "raw_text": "∫₀ˣ f(t)dt=3x³+2x, f(1)=?",
+    "md_path": "wiki/problems/2025_수능_고3_007.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 2,
+    "crop_path": "sources/crops/2025_수능_고3_007.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_017",
+        "sim": 0.943
+      },
+      {
+        "id": "2025_수능_고3_009",
+        "sim": 0.759
+      },
+      {
+        "id": "2025_수능_고3_013",
+        "sim": 0.472
+      },
+      {
+        "id": "2025_수능_고3_019",
+        "sim": 0.381
+      },
+      {
+        "id": "2025_수능_고3_005",
+        "sim": 0.373
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_008",
+    "title": "로그 계산",
+    "grade": "고3",
+    "domain": "수와연산",
+    "topic": "지수와 로그",
+    "concept": [
+      "로그의 성질"
+    ],
+    "difficulty": "중",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "① 1",
+    "problem_number": 8,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "수와연산",
+      "지수와 로그"
+    ],
+    "raw_text": "a=2log(1/√10)+log₂20, b=log2, a×b=?",
+    "md_path": "wiki/problems/2025_수능_고3_008.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 3,
+    "crop_path": "sources/crops/2025_수능_고3_008.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_001",
+        "sim": 1.0
+      },
+      {
+        "id": "2025_수능_고3_016",
+        "sim": 1.0
+      },
+      {
+        "id": "2025_수능_고3_020",
+        "sim": 0.267
+      },
+      {
+        "id": "2025_수능_고3_018",
+        "sim": 0.126
+      },
+      {
+        "id": "2025_수능_고3_019",
+        "sim": 0.123
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_009",
+    "title": "정적분 방정식",
+    "grade": "고3",
+    "domain": "함수",
+    "topic": "적분",
+    "concept": [
+      "정적분",
+      "방정식"
+    ],
+    "difficulty": "상",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "④ 10",
+    "problem_number": 9,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "함수",
+      "적분"
+    ],
+    "raw_text": "f(x)=3x²-16x-20, ∫₋₂ᵃ f=∫₋₂⁰ f, 양수 a=?",
+    "md_path": "wiki/problems/2025_수능_고3_009.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 3,
+    "crop_path": "sources/crops/2025_수능_고3_009.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_017",
+        "sim": 0.852
+      },
+      {
+        "id": "2025_수능_고3_007",
+        "sim": 0.759
+      },
+      {
+        "id": "2025_수능_고3_013",
+        "sim": 0.541
+      },
+      {
+        "id": "2025_수능_고3_020",
+        "sim": 0.367
+      },
+      {
+        "id": "2025_수능_고3_019",
+        "sim": 0.338
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_010",
+    "title": "삼각함수 최댓값",
+    "grade": "고3",
+    "domain": "삼각함수",
+    "topic": "삼각함수",
+    "concept": [
+      "최댓값",
+      "주기"
+    ],
+    "difficulty": "상",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "③ 16",
+    "problem_number": 10,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "삼각함수",
+      "삼각함수"
+    ],
+    "raw_text": "f(x)=acosbx+3, x=π/3에서 최댓값13. a+b 최솟값=?",
+    "md_path": "wiki/problems/2025_수능_고3_010.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 3,
+    "crop_path": "sources/crops/2025_수능_고3_010.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_006",
+        "sim": 1.0
+      },
+      {
+        "id": "2025_수능_고3_미적_023",
+        "sim": 0.244
+      },
+      {
+        "id": "2025_수능_고3_014",
+        "sim": 0.183
+      },
+      {
+        "id": "2025_수능_고3_020",
+        "sim": 0.169
+      },
+      {
+        "id": "2025_수능_고3_009",
+        "sim": 0.149
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_011",
+    "title": "속도·가속도",
+    "grade": "고3",
+    "domain": "함수",
+    "topic": "미분 응용",
+    "concept": [
+      "속도",
+      "가속도"
+    ],
+    "difficulty": "상",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "② 9",
+    "problem_number": 11,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "함수",
+      "미분 응용"
+    ],
+    "raw_text": "x=t³-(3/2)t²-6t. 방향전환 시각에서 가속도=?",
+    "md_path": "wiki/problems/2025_수능_고3_011.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 4,
+    "crop_path": "sources/crops/2025_수능_고3_011.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_미적_028",
+        "sim": 0.584
+      },
+      {
+        "id": "2025_수능_고3_013",
+        "sim": 0.478
+      },
+      {
+        "id": "2025_수능_고3_005",
+        "sim": 0.392
+      },
+      {
+        "id": "2025_수능_고3_019",
+        "sim": 0.374
+      },
+      {
+        "id": "2025_수능_고3_002",
+        "sim": 0.367
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_012",
+    "title": "수열 합·점화식",
+    "grade": "고3",
+    "domain": "수열",
+    "topic": "수열의 합",
+    "concept": [
+      "수열의 합",
+      "점화식"
+    ],
+    "difficulty": "상",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "① 120",
+    "problem_number": 12,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "수열",
+      "수열의 합"
+    ],
+    "raw_text": "Σaₖ/b_{k+1}=n²/2. Σ₁⁵ aₖ=?",
+    "md_path": "wiki/problems/2025_수능_고3_012.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 4,
+    "crop_path": "sources/crops/2025_수능_고3_012.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_018",
+        "sim": 0.661
+      },
+      {
+        "id": "2025_수능_고3_022",
+        "sim": 0.6
+      },
+      {
+        "id": "2025_수능_고3_003",
+        "sim": 0.412
+      },
+      {
+        "id": "2025_수능_고3_009",
+        "sim": 0.123
+      },
+      {
+        "id": "2025_수능_고3_011",
+        "sim": 0.115
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_013",
+    "title": "삼차함수 적분 넓이",
+    "grade": "고3",
+    "domain": "함수",
+    "topic": "적분 응용",
+    "concept": [
+      "정적분",
+      "넓이",
+      "삼차함수"
+    ],
+    "difficulty": "상",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "⑤ 45/4",
+    "problem_number": 13,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "함수",
+      "적분 응용"
+    ],
+    "raw_text": "f(1)=f(2)=0, f'(0)=-7. 넓이 B-A=?",
+    "md_path": "wiki/problems/2025_수능_고3_013.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 5,
+    "crop_path": "sources/crops/2025_수능_고3_013.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_009",
+        "sim": 0.541
+      },
+      {
+        "id": "2025_수능_고3_017",
+        "sim": 0.524
+      },
+      {
+        "id": "2025_수능_고3_011",
+        "sim": 0.478
+      },
+      {
+        "id": "2025_수능_고3_007",
+        "sim": 0.472
+      },
+      {
+        "id": "2025_수능_고3_019",
+        "sim": 0.414
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_014",
+    "title": "사인법칙·외접원",
+    "grade": "고3",
+    "domain": "기하",
+    "topic": "삼각형의 성질",
+    "concept": [
+      "사인법칙",
+      "외접원",
+      "넓이"
+    ],
+    "difficulty": "상",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "④ 36+30√3",
+    "problem_number": 14,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "기하",
+      "삼각형의 성질"
+    ],
+    "raw_text": "sinA:sinC=8:5, 넓이비=9:35, 외접원R=7. 삼각형PBC 넓이 최댓값=?",
+    "md_path": "wiki/problems/2025_수능_고3_014.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 5,
+    "crop_path": "sources/crops/2025_수능_고3_014.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_기하_028",
+        "sim": 0.336
+      },
+      {
+        "id": "2025_수능_고3_기하_023",
+        "sim": 0.299
+      },
+      {
+        "id": "2025_수능_고3_010",
+        "sim": 0.183
+      },
+      {
+        "id": "2025_수능_고3_013",
+        "sim": 0.176
+      },
+      {
+        "id": "2025_수능_고3_006",
+        "sim": 0.13
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_015",
+    "title": "미분가능+방정식 근",
+    "grade": "고3",
+    "domain": "함수",
+    "topic": "미분",
+    "concept": [
+      "미분가능성",
+      "극값"
+    ],
+    "difficulty": "최상",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "② 32",
+    "problem_number": 15,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "함수",
+      "미분"
+    ],
+    "raw_text": "g(x) 미분가능, g'×g'(x-4)=0 실근 4개. g(-2)+g(2)=?",
+    "md_path": "wiki/problems/2025_수능_고3_015.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 6,
+    "crop_path": "sources/crops/2025_수능_고3_015.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_002",
+        "sim": 0.737
+      },
+      {
+        "id": "2025_수능_고3_005",
+        "sim": 0.736
+      },
+      {
+        "id": "2025_수능_고3_019",
+        "sim": 0.697
+      },
+      {
+        "id": "2025_수능_고3_011",
+        "sim": 0.356
+      },
+      {
+        "id": "2025_수능_고3_021",
+        "sim": 0.326
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_016",
+    "title": "로그방정식",
+    "grade": "고3",
+    "domain": "수와연산",
+    "topic": "지수와 로그",
+    "concept": [
+      "로그방정식"
+    ],
+    "difficulty": "중",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "7",
+    "problem_number": 16,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "수와연산",
+      "지수와 로그"
+    ],
+    "raw_text": "log₂(x-3)=log₄(3x-5), x=?",
+    "md_path": "wiki/problems/2025_수능_고3_016.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 6,
+    "crop_path": "sources/crops/2025_수능_고3_016.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_001",
+        "sim": 1.0
+      },
+      {
+        "id": "2025_수능_고3_008",
+        "sim": 1.0
+      },
+      {
+        "id": "2025_수능_고3_020",
+        "sim": 0.293
+      },
+      {
+        "id": "2025_수능_고3_005",
+        "sim": 0.14
+      },
+      {
+        "id": "2025_수능_고3_019",
+        "sim": 0.136
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_017",
+    "title": "부정적분·초기조건",
+    "grade": "고3",
+    "domain": "함수",
+    "topic": "적분",
+    "concept": [
+      "부정적분",
+      "적분상수"
+    ],
+    "difficulty": "중",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "33",
+    "problem_number": 17,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "함수",
+      "적분"
+    ],
+    "raw_text": "f'(x)=9x²+4x, f(1)=6, f(2)=?",
+    "md_path": "wiki/problems/2025_수능_고3_017.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 6,
+    "crop_path": "sources/crops/2025_수능_고3_017.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_007",
+        "sim": 0.943
+      },
+      {
+        "id": "2025_수능_고3_009",
+        "sim": 0.852
+      },
+      {
+        "id": "2025_수능_고3_013",
+        "sim": 0.524
+      },
+      {
+        "id": "2025_수능_고3_005",
+        "sim": 0.418
+      },
+      {
+        "id": "2025_수능_고3_019",
+        "sim": 0.407
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_018",
+    "title": "수열 점화식 합",
+    "grade": "고3",
+    "domain": "수열",
+    "topic": "수열",
+    "concept": [
+      "점화식",
+      "주기성"
+    ],
+    "difficulty": "중",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "96",
+    "problem_number": 18,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "수열",
+      "수열"
+    ],
+    "raw_text": "aₙ+a_{n+4}=12, Σ₁¹⁶ aₙ=?",
+    "md_path": "wiki/problems/2025_수능_고3_018.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 7,
+    "crop_path": "sources/crops/2025_수능_고3_018.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_022",
+        "sim": 0.97
+      },
+      {
+        "id": "2025_수능_고3_012",
+        "sim": 0.661
+      },
+      {
+        "id": "2025_수능_고3_003",
+        "sim": 0.52
+      },
+      {
+        "id": "2025_수능_고3_019",
+        "sim": 0.127
+      },
+      {
+        "id": "2025_수능_고3_008",
+        "sim": 0.126
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_019",
+    "title": "삼차함수 극값",
+    "grade": "고3",
+    "domain": "함수",
+    "topic": "미분",
+    "concept": [
+      "극값",
+      "삼차함수"
+    ],
+    "difficulty": "중",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "41",
+    "problem_number": 19,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "함수",
+      "미분"
+    ],
+    "raw_text": "f(x)=2x³-3ax²-12a²x, 극댓값=7/27, f(3)=?",
+    "md_path": "wiki/problems/2025_수능_고3_019.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 7,
+    "crop_path": "sources/crops/2025_수능_고3_019.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_005",
+        "sim": 0.778
+      },
+      {
+        "id": "2025_수능_고3_002",
+        "sim": 0.742
+      },
+      {
+        "id": "2025_수능_고3_015",
+        "sim": 0.697
+      },
+      {
+        "id": "2025_수능_고3_021",
+        "sim": 0.484
+      },
+      {
+        "id": "2025_수능_고3_013",
+        "sim": 0.414
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_020",
+    "title": "지수함수·합성함수",
+    "grade": "고3",
+    "domain": "함수",
+    "topic": "지수함수와 로그함수",
+    "concept": [
+      "지수함수",
+      "합성함수"
+    ],
+    "difficulty": "상",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "36",
+    "problem_number": 20,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "함수",
+      "지수함수와 로그함수"
+    ],
+    "raw_text": "(1/5)^(x-3)=x 교점k. f(f(x))=3x. f(1/(k³×5^(3k)))=?",
+    "md_path": "wiki/problems/2025_수능_고3_020.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 7,
+    "crop_path": "sources/crops/2025_수능_고3_020.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_013",
+        "sim": 0.37
+      },
+      {
+        "id": "2025_수능_고3_009",
+        "sim": 0.367
+      },
+      {
+        "id": "2025_수능_고3_019",
+        "sim": 0.351
+      },
+      {
+        "id": "2025_수능_고3_005",
+        "sim": 0.332
+      },
+      {
+        "id": "2025_수능_고3_011",
+        "sim": 0.331
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_021",
+    "title": "삼차함수 극한",
+    "grade": "고3",
+    "domain": "함수",
+    "topic": "극한",
+    "concept": [
+      "극한의 존재",
+      "삼차함수"
+    ],
+    "difficulty": "최상",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "16",
+    "problem_number": 21,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "함수",
+      "극한"
+    ],
+    "raw_text": "f(x)=x³+ax²+bx+4. 극한 존재 조건. f(1) 최댓값=?",
+    "md_path": "wiki/problems/2025_수능_고3_021.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 8,
+    "crop_path": "sources/crops/2025_수능_고3_021.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_미적_023",
+        "sim": 0.602
+      },
+      {
+        "id": "2025_수능_고3_019",
+        "sim": 0.484
+      },
+      {
+        "id": "2025_수능_고3_013",
+        "sim": 0.382
+      },
+      {
+        "id": "2025_수능_고3_004",
+        "sim": 0.371
+      },
+      {
+        "id": "2025_수능_고3_020",
+        "sim": 0.328
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_022",
+    "title": "수열 점화식 홀짝",
+    "grade": "고3",
+    "domain": "수열",
+    "topic": "수열",
+    "concept": [
+      "점화식",
+      "귀납법"
+    ],
+    "difficulty": "최상",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "64",
+    "problem_number": 22,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "수열",
+      "수열"
+    ],
+    "raw_text": "a_{n+1}={aₙ-3(홀수), aₙ/2(짝수/0)}. |a_m|=|a_{m+2}| 최솟값=3. |a₁|합=?",
+    "md_path": "wiki/problems/2025_수능_고3_022.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 8,
+    "crop_path": "sources/crops/2025_수능_고3_022.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_018",
+        "sim": 0.97
+      },
+      {
+        "id": "2025_수능_고3_012",
+        "sim": 0.6
+      },
+      {
+        "id": "2025_수능_고3_003",
+        "sim": 0.422
+      },
+      {
+        "id": "2025_수능_고3_021",
+        "sim": 0.121
+      },
+      {
+        "id": "2025_수능_고3_015",
+        "sim": 0.119
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_확통_023",
+    "title": "이항정리 계수",
+    "grade": "고3",
+    "domain": "확률과통계",
+    "topic": "이항정리",
+    "concept": [
+      "이항정리",
+      "이항계수"
+    ],
+    "difficulty": "하",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "⑤ 80",
+    "problem_number": 23,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "확률과통계",
+      "이항정리"
+    ],
+    "raw_text": "(x³+2)⁵ 전개식에서 x⁶의 계수=?",
+    "md_path": "wiki/problems/2025_수능_고3_확통_023.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 9,
+    "crop_path": "sources/crops/2025_수능_고3_확통_023.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_확통_028",
+        "sim": 0.481
+      },
+      {
+        "id": "2025_수능_고3_002",
+        "sim": 0.129
+      },
+      {
+        "id": "2025_수능_고3_기하_023",
+        "sim": 0.114
+      },
+      {
+        "id": "2025_수능_고3_미적_023",
+        "sim": 0.114
+      },
+      {
+        "id": "2025_수능_고3_001",
+        "sim": 0.111
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_미적_023",
+    "title": "삼각함수 극한",
+    "grade": "고3",
+    "domain": "미적분",
+    "topic": "극한",
+    "concept": [
+      "삼각함수 극한"
+    ],
+    "difficulty": "하",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "③ 3",
+    "problem_number": 23,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "미적분",
+      "극한"
+    ],
+    "raw_text": "lim_{x→0} 3x²/sin²x=?",
+    "md_path": "wiki/problems/2025_수능_고3_미적_023.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 13,
+    "crop_path": "sources/crops/2025_수능_고3_미적_023.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_021",
+        "sim": 0.602
+      },
+      {
+        "id": "2025_수능_고3_미적_028",
+        "sim": 0.459
+      },
+      {
+        "id": "2025_수능_고3_007",
+        "sim": 0.28
+      },
+      {
+        "id": "2025_수능_고3_006",
+        "sim": 0.263
+      },
+      {
+        "id": "2025_수능_고3_010",
+        "sim": 0.244
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_기하_023",
+    "title": "벡터 계산",
+    "grade": "고3",
+    "domain": "기하",
+    "topic": "벡터",
+    "concept": [
+      "벡터 연산"
+    ],
+    "difficulty": "하",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "③ 3",
+    "problem_number": 23,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "기하",
+      "벡터"
+    ],
+    "raw_text": "a=(k,3),b=(1,2), a+3b=(6,9), k=?",
+    "md_path": "wiki/problems/2025_수능_고3_기하_023.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 17,
+    "crop_path": "sources/crops/2025_수능_고3_기하_023.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_기하_028",
+        "sim": 0.327
+      },
+      {
+        "id": "2025_수능_고3_014",
+        "sim": 0.299
+      },
+      {
+        "id": "2025_수능_고3_001",
+        "sim": 0.14
+      },
+      {
+        "id": "2025_수능_고3_미적_023",
+        "sim": 0.122
+      },
+      {
+        "id": "2025_수능_고3_002",
+        "sim": 0.121
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_확통_028",
+    "title": "함수 개수 조건",
+    "grade": "고3",
+    "domain": "확률과통계",
+    "topic": "경우의 수",
+    "concept": [
+      "함수의 개수",
+      "조건"
+    ],
+    "difficulty": "상",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "② 171",
+    "problem_number": 28,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "확률과통계",
+      "경우의 수"
+    ],
+    "raw_text": "X={1..6}, f(1)×f(6)이 6의 약수, 단조조건. f 개수=?",
+    "md_path": "wiki/problems/2025_수능_고3_확통_028.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 11,
+    "crop_path": "sources/crops/2025_수능_고3_확통_028.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_확통_023",
+        "sim": 0.481
+      },
+      {
+        "id": "2025_수능_고3_020",
+        "sim": 0.141
+      },
+      {
+        "id": "2025_수능_고3_013",
+        "sim": 0.136
+      },
+      {
+        "id": "2025_수능_고3_009",
+        "sim": 0.129
+      },
+      {
+        "id": "2025_수능_고3_011",
+        "sim": 0.122
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_미적_028",
+    "title": "접선·넓이 미분",
+    "grade": "고3",
+    "domain": "미적분",
+    "topic": "미분 응용",
+    "concept": [
+      "접선",
+      "넓이 미분"
+    ],
+    "difficulty": "최상",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "② (1/2)e+2/3",
+    "problem_number": 28,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "미적분",
+      "미분 응용"
+    ],
+    "raw_text": "f'(x)=-x+e^(1-x²). g(1)+g'(1)=?",
+    "md_path": "wiki/problems/2025_수능_고3_미적_028.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 15,
+    "crop_path": "sources/crops/2025_수능_고3_미적_028.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_011",
+        "sim": 0.584
+      },
+      {
+        "id": "2025_수능_고3_미적_023",
+        "sim": 0.459
+      },
+      {
+        "id": "2025_수능_고3_013",
+        "sim": 0.338
+      },
+      {
+        "id": "2025_수능_고3_015",
+        "sim": 0.313
+      },
+      {
+        "id": "2025_수능_고3_005",
+        "sim": 0.283
+      }
+    ]
+  },
+  {
+    "id": "2025_수능_고3_기하_028",
+    "title": "구·원·거리",
+    "grade": "고3",
+    "domain": "기하",
+    "topic": "공간도형",
+    "concept": [
+      "구",
+      "거리"
+    ],
+    "difficulty": "최상",
+    "source_type": "수능",
+    "year": 2025,
+    "school": "수능",
+    "exam_type": "수능",
+    "answer": "④ √55",
+    "problem_number": 28,
+    "source_pdf": "2025수능_수학문제.pdf",
+    "solution_steps": 1,
+    "tags": [
+      "수능",
+      "2025수능",
+      "기하",
+      "공간도형"
+    ],
+    "raw_text": "AB=8, BC=6, 직각삼각형. 원O위 P,Q (AC까지 거리4). PQ=?",
+    "md_path": "wiki/problems/2025_수능_고3_기하_028.md",
+    "created_at": "2026-05-27 05:54",
+    "page_number": 19,
+    "crop_path": "sources/crops/2025_수능_고3_기하_028.jpg",
+    "similar": [
+      {
+        "id": "2025_수능_고3_014",
+        "sim": 0.336
+      },
+      {
+        "id": "2025_수능_고3_기하_023",
+        "sim": 0.327
+      },
+      {
+        "id": "2025_수능_고3_015",
+        "sim": 0.125
+      },
+      {
+        "id": "2025_수능_고3_미적_028",
+        "sim": 0.123
+      },
+      {
+        "id": "2025_수능_고3_021",
+        "sim": 0.12
+      }
+    ]
+  }
+]

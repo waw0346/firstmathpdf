@@ -1,0 +1,42 @@
+{
+  "name": "박천재",
+  "homework": [
+    {
+      "hw_id": "HW_2026-05-27_박천재",
+      "student": "박천재",
+      "assigned": "2026-05-27",
+      "due": "1주일 후",
+      "filters": {
+        "difficulty": "상"
+      },
+      "problems": [
+        {
+          "problem_id": "2025_수능_고3_009",
+          "title": "정적분 방정식",
+          "difficulty": "상",
+          "status": "미제출",
+          "score": null,
+          "submitted_at": null
+        },
+        {
+          "problem_id": "2025_수능_고3_010",
+          "title": "삼각함수 최댓값",
+          "difficulty": "상",
+          "status": "미제출",
+          "score": null,
+          "submitted_at": null
+        },
+        {
+          "problem_id": "2025_수능_고3_011",
+          "title": "속도·가속도",
+          "difficulty": "상",
+          "status": "미제출",
+          "score": null,
+          "submitted_at": null
+        }
+      ],
+      "total": 3,
+      "completed": 0
+    }
+  ]
+}

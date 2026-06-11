@@ -1,0 +1,338 @@
+{
+  "main": {
+    "id": "f3e2b864984d298b",
+    "type": "split",
+    "children": [
+      {
+        "id": "29ef2bba50d84448",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5289c7cb413a0883",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/problems/2026_6월모의_고3_확통_025.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026_6월모의_고3_확통_025"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3ad65bb728e8aea2",
+    "type": "split",
+    "children": [
+      {
+        "id": "8c67268abe9e87ae",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "056f9db206b20e85",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "파일 탐색기"
+            }
+          },
+          {
+            "id": "f7c73ee830a9c757",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "25년",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "검색"
+            }
+          },
+          {
+            "id": "ac31c44c6b345dc1",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "북마크"
+            }
+          },
+          {
+            "id": "756bdca55eed26a5",
+            "type": "leaf",
+            "state": {
+              "type": "mk-path-view",
+              "state": {},
+              "icon": "layout-grid",
+              "title": "Navigator"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 485.5
+  },
+  "right": {
+    "id": "05cce7c5efd0d2eb",
+    "type": "split",
+    "children": [
+      {
+        "id": "6759ba34bc9d0be6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "db5ecb83f01ae926",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "wiki/problems/2025_10월모의_고3_003.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "2025_10월모의_고3_003 의 백링크"
+            }
+          },
+          {
+            "id": "fccdf2afff92e8f5",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "wiki/problems/2025_10월모의_고3_015.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "2025_10월모의_고3_015 의 나가는 링크"
+            }
+          },
+          {
+            "id": "7e965c97876e43f3",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "태그"
+            }
+          },
+          {
+            "id": "e87f09d4a71b51b3",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "모든 속성"
+            }
+          },
+          {
+            "id": "f22f73f974506c9f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "개요"
+            }
+          },
+          {
+            "id": "9c4a49bf22e0bdcf",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+          },
+          {
+            "id": "d2aeecafd45dfeb9",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-view",
+              "state": {},
+              "icon": "smart-connections",
+              "title": "Connections"
+            }
+          },
+          {
+            "id": "a5b4f8729b3f5d8e",
+            "type": "leaf",
+            "state": {
+              "type": "smtcmp-chat-view",
+              "state": {},
+              "icon": "wand-sparkles",
+              "title": "Smart composer chat"
+            }
+          },
+          {
+            "id": "c4540ab3485041fb",
+            "type": "leaf",
+            "state": {
+              "type": "gemini-agent-view",
+              "state": {},
+              "icon": "sparkles",
+              "title": "Agent Mode"
+            }
+          },
+          {
+            "id": "ff030aec3557af5a",
+            "type": "leaf",
+            "state": {
+              "type": "review-queue-list-view",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "review-queue-list-view"
+            }
+          },
+          {
+            "id": "9a2d0052bc780db5",
+            "type": "leaf",
+            "state": {
+              "type": "agent-client-chat-view",
+              "state": {},
+              "icon": "bot-message-square",
+              "title": "Agent client"
+            }
+          },
+          {
+            "id": "02d77e92884766f4",
+            "type": "leaf",
+            "state": {
+              "type": "smart-lookup-view",
+              "state": {},
+              "icon": "smart-lookup",
+              "title": "Lookup"
+            }
+          }
+        ],
+        "currentTab": 9
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:빠른 전환기 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:새 캔버스 만들기": false,
+      "daily-notes:오늘의 일일 노트 열기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false,
+      "bases:새 베이스 생성하기": false,
+      "large-language-models:Ask a question": false,
+      "agent-client:Open agent client": false,
+      "realclaudian:Open Claudian": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-kanban:Create new board": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "smart-connections:Smart Connections: Open connections view": false,
+      "smart-connections:Toggle Footer Connections": false,
+      "smart-connections:Smart Connections: Open random connection": false,
+      "smart-composer:Open smart composer": false,
+      "gemini-scribe:Gemini Scribe: Agent Mode": false,
+      "smart-lookup:Smart Lookup: Open lookup view": false,
+      "obsidian-spaced-repetition:플래시카드 리뷰": false
+    }
+  },
+  "active": "5289c7cb413a0883",
+  "lastOpenFiles": [
+    "wiki/problems/2025_10월모의_고3_기하_030.md",
+    "wiki/problems/2025_10월모의_고3_기하_029.md",
+    "wiki/problems/2025_10월모의_고3_기하_028.md",
+    "wiki/problems/2025_10월모의_고3_기하_027.md",
+    "wiki/problems/2025_10월모의_고3_기하_026.md",
+    "wiki/problems/2025_10월모의_고3_기하_025.md",
+    "wiki/problems/2025_10월모의_고3_기하_024.md",
+    "wiki/problems/2025_10월모의_고3_기하_023.md",
+    "wiki/problems/2025_10월모의_고3_022.md",
+    "wiki/problems/2025_10월모의_고3_021.md",
+    "wiki/problems/2025_10월모의_고3_020.md",
+    "wiki/problems/2025_10월모의_고3_019.md",
+    "wiki/problems/2025_10월모의_고3_018.md",
+    "wiki/problems/2025_10월모의_고3_017.md",
+    "wiki/problems/2025_10월모의_고3_016.md",
+    "wiki/problems/2025_10월모의_고3_015.md",
+    "wiki/problems/2025_10월모의_고3_확통_029.md",
+    "wiki/problems/2025_10월모의_고3_확통_028.md",
+    "wiki/problems/2025_10월모의_고3_확통_027.md",
+    "wiki/problems/2025_10월모의_고3_확통_025.md",
+    "wiki/problems/2025_10월모의_고3_확통_030.md",
+    "wiki/00_A_GRADE_PROMOTION.md",
+    "wiki/problems/2025_10월모의_고3_미적분_030.md",
+    "wiki/problems/2026_9월모의_고3_확통_030.md",
+    "wiki/problems/2025_10월모의_고3_확통_024.md",
+    "wiki/00_ORIGINAL_SOLUTION_INDEX.md",
+    "gemini-scribe/rag-index-cache.json",
+    "gemini-scribe/Untitled.canvas",
+    "scripts/Untitled.canvas",
+    "gemini-scribe/example-prompts.json",
+    "gemini-scribe/Hooks/hooks-state.json",
+    "gemini-scribe/Hooks/Runs",
+    "gemini-scribe/Hooks",
+    "Tags",
+    "logs/agents/crop_pipeline_audit.json",
+    "scripts/crop_pipeline_audit.py",
+    "logs/agents/crop_dry_run_audit.json",
+    "scripts/__pycache__/crop_all.cpython-314.pyc",
+    "sources/pages/2025/2025수능_수학문제_p01.jpg",
+    "무제 6.canvas",
+    "무제 5.canvas",
+    "무제 4.canvas",
+    "무제 3.canvas",
+    "무제.canvas",
+    "무제 1.canvas",
+    "sources/crops/2025_10월모의_고3_기하_030.jpg",
+    "sources/crops/2025_10월모의_고3_기하_029.jpg",
+    "sources/crops/2025_10월모의_고3_기하_028.jpg",
+    "sources/crops/2025_10월모의_고3_기하_027.jpg",
+    "sources/crops/2025_10월모의_고3_기하_026.jpg",
+    "sources/crops/2025_10월모의_고3_기하_025.jpg",
+    "sources/crops/2025_10월모의_고3_기하_024.jpg",
+    "sources/crops/2025_10월모의_고3_기하_023.jpg",
+    "sources/crops/2025_10월모의_고3_미적분_030.jpg",
+    "무제 2.canvas"
+  ]
+}

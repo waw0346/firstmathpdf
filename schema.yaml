@@ -1,0 +1,170 @@
+# ============================================================
+# Math Problem Wiki — Schema Definition
+# 수학 문제 위키 스키마 정의
+# ============================================================
+
+version: "2.0"
+last_updated: "2026-05-27"
+changelog:
+  v2.0: "Obsidian/Marp/Git 통합 지원 추가"
+  v1.0: "초기 스키마"
+
+# 문제 마크다운 파일의 YAML 프론트매터 필드
+problem_frontmatter:
+  required:
+    - id           # 고유 ID: {year}_{school}_{grade}_{seq}  예) 2023_분당중_3_042
+    - title        # 문제 요약 제목
+    - grade        # 학년: 중1, 중2, 중3, 고1, 고2, 고3
+    - domain       # 대영역: 수와연산, 문자와식, 함수, 기하, 확률과통계
+    - topic        # 단원: 예) 이차방정식, 피타고라스 정리
+    - concept      # 핵심개념 (리스트): [이차방정식의 근, 판별식]
+    - difficulty   # 난이도: 하/중/상/최상
+    - source_type  # 출처 유형: 학교시험/수능/모의고사/교과서/학원자체
+    - year         # 연도: 2023
+    - school       # 학교/기관명: 분당중학교
+    - exam_type    # 시험 종류: 1학기중간/1학기기말/2학기중간/2학기기말/수능/3월모의/6월모의/9월모의
+    - answer       # 정답
+    - created_at   # 생성일시
+
+  optional:
+    - page         # 원문 PDF 페이지 번호
+    - problem_number  # 원문 문제 번호
+    - score        # 배점
+    - tags         # 추가 태그 (리스트)
+    - similar_ids  # 유사문제 ID 목록 (리스트)
+    - image_path   # 그림/그래프 이미지 경로 (sources/assets/ 기준)
+    - solution_steps  # 풀이 단계 수 (난이도 보정용)
+    - correct_rate    # 정답률 (있을 경우)
+    - source_pdf   # 원문 PDF 파일명
+    - notes        # 특이사항
+    # ── Obsidian 전용 ──────────────────────────
+    - aliases      # Obsidian 별칭 검색용 (리스트)
+    - cssclass     # Obsidian CSS 클래스 (예: math-problem)
+    # ── Marp 슬라이드 전용 ─────────────────────
+    - marp_theme   # 슬라이드 테마 (default/gaia/uncover)
+    - slide_note   # 발표자 노트 (슬라이드 생성 시 활용)
+    # ── 학원 관리 전용 ─────────────────────────
+    - used_in_class  # 수업에 사용한 날짜 (리스트)
+    - student_notes  # 학생 반응/특이사항
+
+# 난이도 기준
+difficulty_criteria:
+  하:
+    description: "기본 개념 적용, 단순 계산"
+    solution_steps: "1-2"
+    correct_rate_range: "70-100%"
+  중:
+    description: "개념 복합 적용, 2-3단계 풀이"
+    solution_steps: "3-4"
+    correct_rate_range: "40-70%"
+  상:
+    description: "심화 개념, 4-5단계 풀이, 응용"
+    solution_steps: "5-6"
+    correct_rate_range: "20-40%"
+  최상:
+    description: "최고난도, 창의적 접근, 다단계 추론"
+    solution_steps: "7+"
+    correct_rate_range: "0-20%"
+
+# 영역 및 단원 체계 (교육과정 기반)
+curriculum:
+  중학교:
+    수와연산:
+      - 소수와 합성수
+      - 정수와 유리수
+      - 제곱근과 실수
+      - 유리수와 순환소수
+    문자와식:
+      - 문자와 식
+      - 일차방정식
+      - 일차부등식
+      - 연립방정식
+      - 다항식의 계산
+      - 인수분해
+      - 이차방정식
+    함수:
+      - 좌표평면과 그래프
+      - 일차함수
+      - 이차함수
+    기하:
+      - 기본 도형
+      - 작도와 합동
+      - 평면도형
+      - 입체도형
+      - 삼각형의 성질
+      - 사각형의 성질
+      - 도형의 닮음
+      - 피타고라스 정리
+      - 원의 성질
+    확률과통계:
+      - 통계
+      - 확률
+  고등학교:
+    수와연산:
+      - 다항식
+      - 방정식과 부등식
+      - 복소수
+    함수:
+      - 함수
+      - 유리함수와 무리함수
+      - 지수함수와 로그함수
+      - 삼각함수
+    수열:
+      - 등차수열과 등비수열
+      - 수열의 합
+      - 수학적 귀납법
+    미적분:
+      - 극한
+      - 미분
+      - 적분
+    기하:
+      - 이차곡선
+      - 평면벡터
+      - 공간도형과 공간좌표
+    확률과통계:
+      - 경우의 수
+      - 확률
+      - 통계
+
+# 파일 네이밍 규칙
+naming:
+  problem_file: "{id}.md"
+  topic_file: "{grade}_{domain}_{topic}.md"
+  school_index: "{school}.md"
+  year_index: "{year}.md"
+  problem_id: "{year}_{school_abbr}_{grade}_{seq:03d}"
+
+# 위키 디렉토리 구조
+directory_structure:
+  sources/: "원문 PDF (불변 보관)"
+  sources/assets/: "문제 이미지/그래프 (Obsidian 첨부파일 경로)"
+  wiki/problems/: "문제별 마크다운 페이지"
+  wiki/topics/: "단원/개념별 집계 페이지"
+  wiki/schools/: "학교별 인덱스"
+  wiki/years/: "연도별 인덱스"
+  wiki/difficulty/: "난이도별 인덱스"
+  wiki/obsidian_queries.md: "Obsidian Dataview 쿼리 모음"
+  slides/: "Marp 수업 슬라이드 (자동 생성)"
+  embeddings/: "임베딩 벡터 (ChromaDB)"
+  db/: "SQLite 메타데이터 DB"
+  scripts/: "자동화 스크립트"
+  scripts/marp_export.py: "Marp 슬라이드 생성기"
+  logs/: "처리 로그"
+
+# Obsidian 설정 권장값
+obsidian_settings:
+  vault_root: "wiki/"          # Obsidian Vault 루트
+  attachment_folder: "../sources/assets/"  # 이미지 저장 경로
+  plugins_required:
+    - dataview               # YAML 프론트매터 쿼리
+    - marp                   # 슬라이드 생성
+    - graph-analysis         # 유사문제 네트워크 분석
+  plugins_optional:
+    - calendar               # 수업 날짜 관리
+    - tag-wrangler           # 태그 정리
+
+# Marp 슬라이드 설정
+marp_settings:
+  default_theme: "default"   # default / gaia / uncover
+  output_dir: "slides/"
+  convert_cmd: "npx @marp-team/marp-cli {input} --pdf"

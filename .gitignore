@@ -1,0 +1,80 @@
+# ======================================
+# Math Problem Wiki — .gitignore
+# ======================================
+
+# 임베딩 벡터 저장소 (용량 크고 재생성 가능)
+embeddings/
+embeddings/chroma/
+.local_git/
+.trash/
+.smtcmp_json_db/
+.smtcmp_vector_db.tar.gz
+
+# Python 캐시
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# 가상환경
+venv/
+.venv/
+env/
+.env
+
+# API 키 / 환경변수 (절대 커밋 금지)
+.env
+.env.local
+config_secret.yaml
+*_secret.*
+
+# OS 파일
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# SQLite 임시 파일 (원본 DB는 포함)
+*.db-journal
+*.db-wal
+*.db-shm
+db/snapshots/
+db/*.db
+
+# 대용량 PDF (선택적 — 소스 PDF 포함하려면 이 줄 삭제)
+# sources/**/*.pdf
+
+# 임시 파일
+tmp/
+*.tmp
+*.bak
+logs/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Node (혹시 대시보드 빌드 도구 쓸 경우)
+node_modules/
+
+
+
+
+# Ignore Smart Environment folder
+.smart-env
+# Claude & Me 개인 대화 기록 (Git 제외)
+claude&me/
+
+# Obsidian 플러그인 — API 키 포함 파일 (절대 커밋 금지)
+.obsidian/plugins/smart-composer/data.json
+.obsidian/plugins/smart-composer/main.js
+.obsidian/plugins/large-language-models/data.json

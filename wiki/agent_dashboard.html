@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수학의 지름길 — 멀티 에이전트 대시보드</title>
+<style>
+:root {
+  --bg:#f0f4f8;--panel:#fff;--accent:#2563eb;--accent2:#0ea5e9;
+  --text:#1e293b;--muted:#64748b;--border:#e2e8f0;
+  --green:#16a34a;--yellow:#ca8a04;--red:#dc2626;--purple:#7c3aed;
+  --shadow:0 2px 12px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Malgun Gothic','Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:13px}
+
+.header{background:linear-gradient(135deg,#1e3a8a,#2563eb,#0ea5e9);color:#fff;padding:16px 24px;
+  display:flex;align-items:center;gap:16px;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.header h1{font-size:18px;font-weight:700}
+.header small{opacity:.75;font-size:11px}
+.header-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.status-badge{background:rgba(255,255,255,.2);border-radius:20px;padding:4px 14px;font-size:12px;font-weight:700}
+.refresh-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
+  color:#fff;padding:5px 14px;border-radius:6px;cursor:pointer;font-size:12px}
+.refresh-btn:hover{background:rgba(255,255,255,.25)}
+
+.main{padding:20px;max-width:1400px;margin:0 auto}
+
+/* KPI 카드 행 */
+.kpi-row{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:20px}
+.kpi{background:var(--panel);border-radius:10px;padding:14px;box-shadow:var(--shadow);text-align:center}
+.kpi-icon{font-size:22px;margin-bottom:4px}
+.kpi-value{font-size:24px;font-weight:800;color:var(--accent)}
+.kpi-label{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;margin-top:2px}
+.kpi.ok .kpi-value{color:var(--green)}
+.kpi.warn .kpi-value{color:var(--yellow)}
+.kpi.err .kpi-value{color:var(--red)}
+
+/* 레이아웃 */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px}
+.full{margin-bottom:16px}
+
+.card{background:var(--panel);border-radius:10px;padding:16px;box-shadow:var(--shadow)}
+.card-title{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.05em;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+
+/* 에이전트 상태 그리드 */
+.agent-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.agent-card{border-radius:8px;padding:10px;text-align:center;border:2px solid transparent}
+.agent-card .a-icon{font-size:22px;margin-bottom:4px}
+.agent-card .a-name{font-size:11px;font-weight:700;margin-bottom:2px}
+.agent-card .a-status{font-size:10px;padding:2px 8px;border-radius:10px;display:inline-block;font-weight:600}
+.agent-card .a-msg{font-size:9px;color:var(--muted);margin-top:4px}
+.status-ok{background:#dcfce7;color:#166534}
+.status-warn{background:#fef9c3;color:#854d0e}
+.status-idle{background:#f1f5f9;color:#475569}
+
+/* 파이프라인 흐름 */
+.pipeline{display:flex;align-items:center;gap:6px;padding:10px;overflow-x:auto}
+.pipe-step{background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:8px 12px;
+  text-align:center;white-space:nowrap;min-width:110px}
+.pipe-step .p-icon{font-size:18px}
+.pipe-step .p-name{font-size:11px;font-weight:700;margin-top:2px}
+.pipe-step .p-time{font-size:9px;color:var(--muted)}
+.pipe-step.done{border-color:var(--green);background:#f0fdf4}
+.pipe-step.done .p-name{color:var(--green)}
+.pipe-arrow{color:var(--muted);font-size:16px;flex-shrink:0}
+
+/* 테스트 결과 테이블 */
+table{width:100%;border-collapse:collapse;font-size:11px}
+th{background:#f8fafc;padding:7px 10px;text-align:left;font-weight:700;
+  color:var(--muted);border-bottom:2px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
+tr:hover td{background:#f8fafc}
+.badge{padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;display:inline-block}
+.badge-ok{background:#dcfce7;color:#166534}
+.badge-fail{background:#fee2e2;color:#7f1d1d}
+.badge-warn{background:#fef9c3;color:#854d0e}
+.diff-하{color:var(--green);font-weight:700}
+.diff-중{color:var(--yellow);font-weight:700}
+.diff-상{color:var(--red);font-weight:700}
+.diff-최상{color:var(--purple);font-weight:700}
+
+/* 메시지 로그 */
+.msg-log{max-height:200px;overflow-y:auto;font-size:10px}
+.msg-item{padding:4px 8px;border-radius:4px;margin-bottom:3px;display:flex;gap:8px;align-items:center}
+.msg-item.alert{background:#fee2e2}
+.msg-item.report{background:#f0fdf4}
+.msg-item.sim{background:#eff6ff}
+.msg-from{font-weight:700;min-width:100px}
+.msg-arrow{color:var(--muted)}
+.msg-to{min-width:90px}
+.msg-type{color:var(--muted)}
+
+/* 시뮬레이션 비교 */
+.sim-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.sim-level{min-width:50px;font-size:11px;font-weight:700}
+.sim-bar{flex:1;height:18px;background:#f1f5f9;border-radius:9px;overflow:hidden}
+.sim-fill{height:100%;border-radius:9px;transition:width .5s;display:flex;align-items:center;
+  padding-left:8px;font-size:9px;font-weight:700;color:#fff}
+.sim-score{min-width:40px;text-align:right;font-size:11px;font-weight:700}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>🤖 멀티 에이전트 대시보드</h1>
+    <small>수학의 지름길 학원 · AI 플랫폼 운영 현황</small>
+  </div>
+  <div class="header-right">
+    <span class="status-badge" id="overallStatus">🟢 시스템 정상</span>
+    <span style="font-size:11px;opacity:.75" id="lastUpdate"></span>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- KPI 카드 -->
+  <div class="kpi-row">
+    <div class="kpi ok"><div class="kpi-icon">🗃️</div><div class="kpi-value">28</div><div class="kpi-label">총 문제</div></div>
+    <div class="kpi ok"><div class="kpi-icon">🔗</div><div class="kpi-value">140</div><div class="kpi-label">유사관계</div></div>
+    <div class="kpi ok"><div class="kpi-icon">🖼️</div><div class="kpi-value">28</div><div class="kpi-label">크롭 이미지</div></div>
+    <div class="kpi ok"><div class="kpi-icon">📝</div><div class="kpi-value">28</div><div class="kpi-label">Wiki .md</div></div>
+    <div class="kpi ok"><div class="kpi-icon">🤖</div><div class="kpi-value">6</div><div class="kpi-label">에이전트</div></div>
+    <div class="kpi ok"><div class="kpi-icon">👩‍🎓</div><div class="kpi-value">3</div><div class="kpi-label">학생 데이터</div></div>
+  </div>
+
+  <!-- 에이전트 상태 -->
+  <div class="card full">
+    <div class="card-title">🤖 에이전트 상태</div>
+    <div class="agent-grid">
+      <div class="agent-card" style="background:#fef3c7;border-color:#fbbf24">
+        <div class="a-icon">🎖️</div>
+        <div class="a-name">Captain Agent</div>
+        <div class="a-status status-ok">✅ 운영중</div>
+        <div class="a-msg">66건 메시지 처리</div>
+      </div>
+      <div class="agent-card" style="background:#dbeafe;border-color:#60a5fa">
+        <div class="a-icon">🔬</div>
+        <div class="a-name">Senior Engineer</div>
+        <div class="a-status status-ok">✅ 점검완료</div>
+        <div class="a-msg">9체크 통과·9경고</div>
+      </div>
+      <div class="agent-card" style="background:#ecfdf5;border-color:#6ee7b7">
+        <div class="a-icon">🧮</div>
+        <div class="a-name">Math Expert</div>
+        <div class="a-status status-ok">✅ 100% 정확</div>
+        <div class="a-msg">28/28 정답 검증</div>
+      </div>
+      <div class="agent-card" style="background:#eff6ff;border-color:#93c5fd">
+        <div class="a-icon">👩‍🏫</div>
+        <div class="a-name">Teacher Agent</div>
+        <div class="a-status status-ok">✅ 수업계획</div>
+        <div class="a-msg">학생 3명 과제출제</div>
+      </div>
+      <div class="agent-card" style="background:#fdf2f8;border-color:#f0abfc">
+        <div class="a-icon">📝</div>
+        <div class="a-name">Student Agent</div>
+        <div class="a-status status-ok">✅ 시뮬완료</div>
+        <div class="a-msg">3레벨 비교 테스트</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <!-- 파이프라인 흐름 -->
+    <div class="card">
+      <div class="card-title">⚙️ 인제스트 파이프라인</div>
+      <div class="pipeline">
+        <div class="pipe-step done"><div class="p-icon">📄</div><div class="p-name">PDF 입력</div><div class="p-time">2025 수능</div></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step done"><div class="p-icon">📥</div><div class="p-name">Ingest Agent</div><div class="p-time">28문제 추출</div></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step done"><div class="p-icon">🖼️</div><div class="p-name">Render Agent</div><div class="p-time">크롭 28개</div></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step done"><div class="p-icon">🔍</div><div class="p-name">Search Agent</div><div class="p-time">140쌍 유사도</div></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step done"><div class="p-icon">📚</div><div class="p-name">Wiki Agent</div><div class="p-time">28 .md 생성</div></div>
+      </div>
+    </div>
+
+    <!-- 학생 시뮬레이션 결과 -->
+    <div class="card">
+      <div class="card-title">📊 학생 실력별 시뮬레이션 결과</div>
+      <div style="margin-bottom:10px">
+        <div class="sim-bar-row">
+          <div class="sim-level diff-하">하급</div>
+          <div class="sim-bar"><div class="sim-fill" style="width:100%;background:var(--green)">100%</div></div>
+          <div class="sim-score diff-하">100%</div>
+        </div>
+        <div class="sim-bar-row">
+          <div class="sim-level diff-중">중급</div>
+          <div class="sim-bar"><div class="sim-fill" style="width:43%;background:var(--yellow)">43%</div></div>
+          <div class="sim-score diff-중">43%</div>
+        </div>
+        <div class="sim-bar-row">
+          <div class="sim-level diff-상">상급</div>
+          <div class="sim-bar"><div class="sim-fill" style="width:20%;background:var(--red)">20%</div></div>
+          <div class="sim-score diff-상">20%</div>
+        </div>
+      </div>
+      <div style="font-size:10px;color:var(--muted);border-top:1px solid var(--border);padding-top:8px">
+        주요 오류: 중급 → 문제 오독 | 상급 → 계산 실수<br>
+        Teacher Agent → 오답 문제 Math Expert에 해설 요청 자동 발송
+      </div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <!-- Math Expert 정답 검증 -->
+    <div class="card">
+      <div class="card-title">🧮 Math Expert — 정답 검증 결과</div>
+      <table>
+        <tr><th>번호</th><th>제목</th><th>난이도</th><th>정답</th><th>검증</th></tr>
+        <tr><td>1</td><td>거듭제곱근 계산</td><td class="diff-하">하</td><td>⑤ 5</td><td><span class="badge badge-ok">✅</span></td></tr>
+        <tr><td>9</td><td>함수 미분 조건</td><td class="diff-중">중</td><td>④ 10</td><td><span class="badge badge-ok">✅</span></td></tr>
+        <tr><td>13</td><td>삼차함수 적분</td><td class="diff-상">상</td><td>⑤ 45/4</td><td><span class="badge badge-ok">✅</span></td></tr>
+        <tr><td>21</td><td>함수 개수 조건</td><td class="diff-상">상</td><td>16</td><td><span class="badge badge-ok">✅</span></td></tr>
+        <tr><td>22</td><td>삼차함수 킬러</td><td class="diff-상">상</td><td>64</td><td><span class="badge badge-ok">✅</span></td></tr>
+        <tr><td colspan="4" style="text-align:right;font-weight:700;color:var(--green)">28/28 일치</td><td><span class="badge badge-ok">100%</span></td></tr>
+      </table>
+    </div>
+
+    <!-- Senior Engineer 점검 결과 -->
+    <div class="card">
+      <div class="card-title">🔬 Senior Engineer — 시스템 점검</div>
+      <table>
+        <tr><th>점검 항목</th><th>결과</th><th>비고</th></tr>
+        <tr><td>DB 파일 크기</td><td><span class="badge badge-ok">✅ PASS</span></td><td>52KB 정상</td></tr>
+        <tr><td>문제 수</td><td><span class="badge badge-ok">✅ PASS</span></td><td>28개</td></tr>
+        <tr><td>유사관계</td><td><span class="badge badge-ok">✅ PASS</span></td><td>140쌍</td></tr>
+        <tr><td>Wiki 동기화</td><td><span class="badge badge-ok">✅ PASS</span></td><td>28 .md</td></tr>
+        <tr><td>정답 완비</td><td><span class="badge badge-ok">✅ PASS</span></td><td>전체</td></tr>
+        <tr><td>크롭 이미지</td><td><span class="badge badge-ok">✅ PASS</span></td><td>28개, 평균 94KB</td></tr>
+        <tr><td>DB 쿼리 속도</td><td><span class="badge badge-ok">✅ PASS</span></td><td>0.1ms</td></tr>
+        <tr><td>journal 파일</td><td><span class="badge badge-warn">⚠️ WARN</span></td><td>512B — 모니터링</td></tr>
+        <tr><td>전체</td><td colspan="2"><span class="badge badge-warn">⚠️ 9통과 / 9경고 (실패 없음)</span></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 에이전트 간 메시지 로그 -->
+  <div class="card full">
+    <div class="card-title">📨 에이전트 간 통신 현황 (총 66건)</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--muted);margin-bottom:6px">메시지 유형별</div>
+        <div class="sim-bar-row">
+          <div style="min-width:80px;font-size:11px">🚨 alert</div>
+          <div class="sim-bar"><div class="sim-fill" style="width:85%;background:var(--red)">56건</div></div>
+        </div>
+        <div class="sim-bar-row">
+          <div style="min-width:80px;font-size:11px">📊 report</div>
+          <div class="sim-bar"><div class="sim-fill" style="width:11%;background:var(--green)">7건</div></div>
+        </div>
+        <div class="sim-bar-row">
+          <div style="min-width:80px;font-size:11px">📝 sim_result</div>
+          <div class="sim-bar"><div class="sim-fill" style="width:5%;background:var(--accent)">3건</div></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--muted);margin-bottom:6px">에이전트 간 라우팅</div>
+        <div class="msg-log" id="msgLog">
+          <div class="msg-item alert"><span class="msg-from">math_expert</span><span class="msg-arrow">→</span><span class="msg-to">captain</span><span class="msg-type">alert × 30건</span></div>
+          <div class="msg-item alert"><span class="msg-from">math_expert</span><span class="msg-arrow">→</span><span class="msg-to">senior_engineer</span><span class="msg-type">alert × 28건</span></div>
+          <div class="msg-item report"><span class="msg-from">teacher</span><span class="msg-arrow">→</span><span class="msg-to">captain</span><span class="msg-type">report × 4건</span></div>
+          <div class="msg-item sim"><span class="msg-from">student</span><span class="msg-arrow">→</span><span class="msg-to">teacher</span><span class="msg-type">simulation_result × 3건</span></div>
+          <div class="msg-item report"><span class="msg-from">senior_engineer</span><span class="msg-arrow">→</span><span class="msg-to">captain</span><span class="msg-type">report × 1건</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Teacher 수업 현황 -->
+  <div class="card full">
+    <div class="card-title">👩‍🏫 Teacher Agent — 과제 현황</div>
+    <table>
+      <tr><th>학생</th><th>과제 수</th><th>문제 예시</th><th>난이도</th><th>마감</th><th>상태</th></tr>
+      <tr>
+        <td><b>김수학</b></td><td>3문제</td>
+        <td>거듭제곱근, 미분계수, 이항정리</td>
+        <td class="diff-하">하</td><td>1주일 후</td>
+        <td><span class="badge badge-warn">⏳ 대기</span></td>
+      </tr>
+      <tr>
+        <td><b>이공부</b></td><td>3문제</td>
+        <td>등비수열, 연속함수, 곱의 미분법</td>
+        <td class="diff-중">중</td><td>1주일 후</td>
+        <td><span class="badge badge-warn">⏳ 대기</span></td>
+      </tr>
+      <tr>
+        <td><b>박천재</b></td><td>3문제</td>
+        <td>정적분 방정식, 삼각함수, 속도·가속도</td>
+        <td class="diff-상">상</td><td>1주일 후</td>
+        <td><span class="badge badge-warn">⏳ 대기</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 다음 단계 로드맵 -->
+  <div class="card full" style="background:linear-gradient(90deg,#eff6ff,#f0fdf4)">
+    <div class="card-title">🗺️ 다음 단계 로드맵</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+      <div style="background:#fff;border-radius:8px;padding:12px;border-left:3px solid var(--accent)">
+        <div style="font-weight:700;margin-bottom:4px">📥 입력 확장</div>
+        <div style="font-size:10px;color:var(--muted)">사진/스캔/Word 파일<br>Claude Vision 연동<br>python-docx 파서</div>
+      </div>
+      <div style="background:#fff;border-radius:8px;padding:12px;border-left:3px solid var(--green)">
+        <div style="font-weight:700;margin-bottom:4px">📚 위키 확장</div>
+        <div style="font-size:10px;color:var(--muted)">학교시험 연도별 추가<br>300문제 → qmd 전환<br>Obsidian 연동 완성</div>
+      </div>
+      <div style="background:#fff;border-radius:8px;padding:12px;border-left:3px solid var(--yellow)">
+        <div style="font-weight:700;margin-bottom:4px">🌐 웹 서버</div>
+        <div style="font-size:10px;color:var(--muted)">Flask 선생님 포털<br>학생 로그인 시스템<br>실시간 채점 API</div>
+      </div>
+      <div style="background:#fff;border-radius:8px;padding:12px;border-left:3px solid var(--purple)">
+        <div style="font-weight:700;margin-bottom:4px">🤖 AI 강화</div>
+        <div style="font-size:10px;color:var(--muted)">pix2tex LaTeX 변환<br>ChromaDB 고급 검색<br>교사 리뷰 UI 구축</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+document.getElementById('lastUpdate').textContent =
+  new Date().toLocaleString('ko-KR', {month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'}) + ' 업데이트';
+</script>
+</body>
+</html>
