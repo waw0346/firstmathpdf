@@ -6,7 +6,7 @@
 api:
   # Claude API (문제 분류, 해설 생성)
   anthropic:
-    model: "claude-3-5-sonnet-20241022"
+    model: "claude-haiku-4-5-20251001"
     max_tokens: 2048
     # api_key는 환경변수 ANTHROPIC_API_KEY 에서 읽음
 
